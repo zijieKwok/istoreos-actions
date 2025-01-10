@@ -28,7 +28,7 @@ jobs:
       with:
         personal_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: main
-        publish_dir: ./
+        publish_dir: ./public
         user_name: 'Deploy'
         user_email: 'github-actions[bot]@github.com'
         exclude_assets: ''
