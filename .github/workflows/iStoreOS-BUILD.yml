@@ -144,6 +144,17 @@ jobs:
         echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
         echo "::set-output name=status::success"
 
+    - name: 检查磁盘空间
+      if: (!cancelled())
+      run: df -hT
+
+    - name: 上传 bin 文件夹
+      uses: actions/upload-artifact@main
+      if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
+      with:
+        name: OpenWrt_bin${{ env.FILE_DATE }}
+        path: openwrt/bin
+
     - name: 整理固件文件
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
@@ -167,8 +178,6 @@ jobs:
         echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H.%M")"
         touch release.txt
         echo "
-        ✎ 插件: $(grep "CONFIG_PACKAGE_luci-app-\(.*\)=y" openwrt/.config | sed "s/CONFIG_PACKAGE_luci-app-\(.*\)=y/\1/g" | grep -v "_\|arpbind\|autoreboot\|firewall\|mtk\|opkg") >> release.txt
-
         💻 架构: ${{ matrix.ARCHITECTURE }}
 
         📂 源码: ${{ env.REPO_URL }}
@@ -177,9 +186,9 @@ jobs:
 
         ⏱️ 编译时间: $(date +"%Y年%m月%d日%H时%M分")
 
-        🌐 管理地址: 192.168.5.1
+        🌐 管理地址: 10.0.0.1
 
-        👤 用户名: 无
+        👤 用户名: root
 
         🔒 密码: password " >> release.txt
         echo "::set-output name=status::success"
