@@ -29,8 +29,8 @@ jobs:
         personal_token: ${{ secrets.ACCESS_TOKEN }}
         publish_branch: main
         publish_dir: ./
-        user_name: 'GitHub Action'
-        user_email: 'github-actions[bot]@github.com'
+        user_name: 'zijieKwok'
+        user_email: '109743406+zijieKwok@users.noreply.github.com'
         exclude_assets: ''
         keep_files: true
         commit_message: "Sync files"
