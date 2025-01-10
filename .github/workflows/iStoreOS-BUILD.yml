@@ -40,9 +40,12 @@ jobs:
     strategy:
       matrix:
         REPO_BRANCH:
+          # - main
           - istoreos-22.03
           # - istoreos-23.05
         ARCHITECTURE:
+          # - rk33xx
+          # - rk35xx
           - x86
         os:
           - ubuntu-22.04
