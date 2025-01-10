@@ -24,13 +24,13 @@ jobs:
         wget -O ./x86-alpha/.config https://fw0.koolcenter.com/iStoreOS/alpha/x86_64_efi/config.buildinfo
 
     - name: 同步配置
-      uses: zijieKwok/actions-gh-pages@v4
+      uses: peaceiris/actions-gh-pages@v4
       with:
-        personal_token: ${{ secrets.ACCESS_TOKEN }}
+        personal_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: main
         publish_dir: ./
-        user_name: 'zijieKwok'
-        user_email: '109743406+zijieKwok@users.noreply.github.com'
+        user_name: 'Deploy'
+        user_email: 'github-actions[bot]@github.com'
         exclude_assets: ''
         keep_files: true
         commit_message: "Sync files"
