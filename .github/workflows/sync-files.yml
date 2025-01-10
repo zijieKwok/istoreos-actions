@@ -24,7 +24,7 @@ jobs:
         wget -O ./x86-alpha/.config https://fw0.koolcenter.com/iStoreOS/alpha/x86_64_efi/config.buildinfo
 
     - name: 同步配置
-      uses: peaceiris/actions-gh-pages@v4
+      uses: zijieKwok/actions-gh-pages@v4
       with:
         personal_token: ${{ secrets.ACCESS_TOKEN }}
         publish_branch: main
