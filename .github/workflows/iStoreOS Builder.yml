@@ -10,24 +10,31 @@
 # See /LICENSE for more information.
 #
 
-name: iStoreOS Builder
+name: iStoreOS24.10-Builder
 
 on:
+  repository_dispatch:
   workflow_dispatch:
-   schedule:
-     - cron: '0 4 * * *'
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
+  schedule:
+   - cron: 0 16 * * *
 
 env:
   REPO_URL: https://github.com/istoreos/istoreos
-  REPO_BRANCH: istoreos-24.10
-  FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: /x86-alpha/.config
+  # REPO_BRANCH: main
+  FEEDS_CONF: feeds.conf
+  CONFIG_FILE: .config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
-  UPLOAD_BIN_DIR: false
+  UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
+  GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
 jobs:
   build:
