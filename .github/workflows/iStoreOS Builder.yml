@@ -13,8 +13,9 @@
 name: iStoreOS Builder
 
 on:
-  repository_dispatch:
   workflow_dispatch:
+   schedule:
+     - cron: '0 4 * * *'
 
 env:
   REPO_URL: https://github.com/istoreos/istoreos
