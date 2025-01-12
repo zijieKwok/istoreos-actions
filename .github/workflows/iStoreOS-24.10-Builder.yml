@@ -140,11 +140,11 @@ jobs:
         echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H.%M")"
         touch release.txt
         echo "
-        💻 架构: ${{ matrix.ARCHITECTURE }}
+        💻 架构: x86
 
         📂 源码: ${{ env.REPO_URL }}
 
-        🌳 分支: ${{ matrix.REPO_BRANCH }}
+        🌳 分支: istoreos-24.10
 
         ⏱️ 编译时间: $(date +"%Y年%m月%d日%H时%M分")
 
