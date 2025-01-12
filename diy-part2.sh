@@ -20,15 +20,15 @@ sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' By JayKwok'/g" package/base-
 # cp -af istoreos/index.js feeds/extraipk/linkease/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
 # rm -rf package/base-files/files/etc/banner
 # cp -af feeds/extraipk/patch/diy/banner  package/base-files/files/etc/banner
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
+# rm -rf feeds/packages/lang/golang
+# git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
 # rm -rf feeds/extraipk/theme
 
 ##更新FQ
-rm -rf feeds/packages/net/tailscale/*
-git clone https://github.com/zijieKwok/jaykwok-ipk -b master/tailscale  feeds/packages/net/tailscale/
-touch feeds/luci/applications/luci-app-tailscale
-git clone https://github.com/zijieKwok/jaykwok-ipk -b master/luci-app-tailscale feeds/luc/applications/luci-app-tailscale
+# rm -rf feeds/packages/net/tailscale/*
+# git clone https://github.com/zijieKwok/jaykwok-ipk -b master/tailscale  feeds/packages/net/tailscale/
+# touch feeds/luci/applications/luci-app-tailscale
+# git clone https://github.com/zijieKwok/jaykwok-ipk -b master/luci-app-tailscale feeds/luc/applications/luci-app-tailscale
 # sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 # ttyd 自动登录
 # sed -i "s?/bin/login?/usr/libexec/login.sh?g" ${GITHUB_WORKSPACE}/openwrt/package/feeds/packages/ttyd/files/ttyd.config
