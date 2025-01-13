@@ -38,8 +38,8 @@ jobs:
         rm -rf ./istoreos/kernel-6.6
         
          
-        git clone https://github.com/sbwml/luci-app-mosdns -b v5-lua ./istoreos/tmp
-        mv ./istoreos/tmp/luci-app-mosdns ./istoreos/
+        git clone https://github.com/openwrt/openwrt.git -b openwrt-24.10 ./istoreos/tmp
+        mv ./istoreos/tmp/include/kernel-6.6 ./istoreos/
         rm -rf ./istoreos/tmp
 
         
