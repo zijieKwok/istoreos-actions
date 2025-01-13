@@ -38,8 +38,8 @@ jobs:
         rm -rf ./istoreos/golang
         
          
-        git clone https://github.com/sbwml/packages_lang_golang -b 23.x ./istoreos/
-        mv ./istoreos/golang/* ./istoreos/
+        git clone https://github.com/sbwml/packages_lang_golang -b 23.x ./istoreos/tmp
+        mv ./istoreos/tmp/lang/golang/* ./istoreos/
         rm -rf ./istoreos/
 
         
