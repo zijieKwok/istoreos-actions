@@ -37,8 +37,8 @@ sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/package
 # rm -rf feeds/Jaykwok2999/net/v2ray-geodata/*
 # cp -af feeds/Jaykwok2999/op-mosdns/v2ray-geodata/* feeds/packages/net/v2ray-geodata/
 
-rm -rf feeds/luci/applications/luci-app-openclash/*
-cp -af feeds/Jaykwok2999/patch/wall-luci/luci-app-openclash/*  feeds/luci/applications/luci-app-openclash/
+# rm -rf feeds/luci/applications/luci-app-openclash/*
+# cp -af feeds/Jaykwok2999/patch/wall-luci/luci-app-openclash/*  feeds/luci/applications/luci-app-openclash/
 
 # 添加自定义软件包
 # echo '
