@@ -10,8 +10,8 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
-# 修改openwrt登陆地址,把下面的 192.168.10.1 修改成你想要的就可以了
-sed -i 's/192.168.100.1/192.168.2.1/g' package/base-files/files/bin/config_generate
+# 修改iStoreOS登陆ip,把下面的 192.168.100.1 修改成192.168.2.1
+sed -i 's/192.168.100.1/192.168.2.1/g' package/istoreos-files/Makefile
 # rm -rf ./feeds/extraipk/theme
 # 修改主机名字，把 iStore OS 修改你喜欢的就行（不能纯数字或者使用中文）
 sed -i 's/OpenWrt/iStoreOS/g' package/base-files/files/bin/config_generate
