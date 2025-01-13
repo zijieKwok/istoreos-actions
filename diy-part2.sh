@@ -17,18 +17,18 @@ sed -i 's/192.168.100.1/192.168.2.1/g' package/istoreos-files/Makefile
 sed -i 's/OpenWrt/iStoreOS/g' package/base-files/files/bin/config_generate
 sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' By JayKwok'/g" package/base-files/files/etc/openwrt_release
 sed -i 's/fw0.koolcenter.com/ota.5588999.xyz/g' package/diy/luci-app-ota/root/bin/ota
-rm -rf target/linux/x86/patches-6.6
-cp -af istoreos/patches-6.6 target/linux/x86
+rm -rf target/linux/x86/patches-6.6/*
+cp -af istoreos/patches-6.6/* target/linux/x86/patches-6.6/
 rm -rf feeds/linkease_nas_luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
 cp -af istoreos/index.js feeds/linkease_nas_luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
 rm -rf package/base-files/files/etc/banner
-cp -af feeds/Jaykwok2999/patch/diy/banner package/base-files/files/etc/banner
+cp -af feeds/Jaykwok2999/patch/diy/banner package/base-files/files/etc/
 rm -rf package/base-files/files/etc/passwd
-cp -af istoreos/passwd package/base-files/files/etc/passwd
+cp -af istoreos/passwd package/base-files/files/etc/
 rm -rf package/base-files/files/etc/shadow
-cp -af istoreos/shadow package/base-files/files/etc/shadow
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
+cp -af istoreos/shadow package/base-files/files/etc/
+rm -rf feeds/packages/lang/golang/*
+cp -af istoreos/golang/* feeds/packages/lang/golang/
 
 
 ##更新tailscale
@@ -40,13 +40,13 @@ sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/package
 
 
 ##带sfe:turboacc替换firewall4、libnftnl、nftables并打上952、613、953补丁
-curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
+# curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
 
 ##MosDNS
-# rm -rf feeds/packages/net/mosdns/*
-# cp -af feeds/Jaykwok2999/op-mosdns/mosdns/* feeds/packages/net/mosdns/
-# rm -rf feeds/Jaykwok2999/net/v2ray-geodata/*
-# cp -af feeds/Jaykwok2999/op-mosdns/v2ray-geodata/* feeds/packages/net/v2ray-geodata/
+rm -rf feeds/packages/net/mosdns/*
+cp -af feeds/Jaykwok2999/op-mosdns/mosdns/* feeds/packages/net/mosdns/
+rm -rf feeds/Jaykwok2999/net/v2ray-geodata/*
+cp -af feeds/Jaykwok2999/op-mosdns/v2ray-geodata/* feeds/packages/net/v2ray-geodata/
 
 # rm -rf feeds/luci/applications/luci-app-openclash/*
 # cp -af feeds/Jaykwok2999/patch/wall-luci/luci-app-openclash/*  feeds/luci/applications/luci-app-openclash/
