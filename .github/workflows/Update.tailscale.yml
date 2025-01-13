@@ -38,7 +38,7 @@ jobs:
         rm -rf ./istoreos/tailscale
         
          
-        git clone https://git.openwrt.org/feed/packages.git -b openwrt-24.10 ./packages/net
+        git clone https://github.com/immortalwrt/packages.git -b openwrt-24.10 ./packages/net
         mv ./packages/net/tailscale ./istoreos/
         rm -rf ./packages/net
 
