@@ -35,12 +35,12 @@ jobs:
     - name: Update
       run: |
 
-        rm -rf ./kernel-6.6
+        rm -rf ./istoreos/kernel-6.6
         
          
-        git clone --depth=1 https://github.com/openwrt/openwrt.git -b openwrt-24.10
-        mv ./include/kernel-6.6 ./kernel-6.6
-        rm -rf ./include
+        git clone https://github.com/sbwml/luci-app-mosdns -b v5-lua ./istoreos/tmp
+        mv ./istoreos/tmp/luci-app-mosdns ./istoreos/
+        rm -rf ./istoreos/tmp
 
         
         
