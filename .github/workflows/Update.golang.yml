@@ -35,12 +35,12 @@ jobs:
     - name: Update
       run: |
 
-        rm -rf ./istoreos/kernel-6.6
-        rm -rf ./istoreos/kernel-6.6
+        rm -rf ./istoreos/golang
+        
          
-        git clone https://github.com/sbwml/packages_lang_golang -b 23.x ./istoreos/tmp
-        mv ./istoreos/tmp/golang ./istoreos/
-        rm -rf ./istoreos/tmp
+        # git clone https://github.com/sbwml/packages_lang_golang -b 23.x ./istoreos/tmp
+        # mv ./istoreos/tmp/lang/golang ./istoreos/
+        # rm -rf ./istoreos/tmp
 
         
         
