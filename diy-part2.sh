@@ -17,7 +17,10 @@ sed -i 's/192.168.100.1/192.168.2.1/g' package/istoreos-files/Makefile
 sed -i 's/OpenWrt/iStoreOS/g' package/base-files/files/bin/config_generate
 sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' By JayKwok'/g" package/base-files/files/etc/openwrt_release
 sed -i 's/fw0.koolcenter.com/ota.5588999.xyz/g' package/diy/luci-app-ota/root/bin/ota
-rm -rf target/linux/x86/patches-6.6/*
+rm -rf feeds/Jaykwok2999/luci-app-bypass
+rm -rf feeds/third_party/luci-app-LingTiGameAcc
+rm -rf feeds/Jaykwok2999/luci-app-ssr-plus
+rm -rf feeds/Jaykwok2999/luci-app-turboacc
 cp -af istoreos/patches-6.6/* target/linux/x86/patches-6.6/
 rm -rf feeds/linkease_nas_luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
 cp -af istoreos/index.js feeds/linkease_nas_luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
