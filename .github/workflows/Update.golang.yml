@@ -35,7 +35,7 @@ jobs:
     - name: Update
       run: |
 
-        rm -rf ./istoreos/golang
+        rm -rf ./istoreos/golang/*
         
          
         git clone https://github.com/sbwml/packages_lang_golang -b 23.x ./istoreos/tmp
