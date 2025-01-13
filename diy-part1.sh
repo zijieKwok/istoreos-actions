@@ -15,7 +15,7 @@
 
 # Add a feed source
 echo 'src-git third_party https://github.com/linkease/istore-packages.git;main' >>feeds.conf.default
-# echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
+echo 'src-git linkease_nas https://github.com/linkease/nas-packages.git;master' >>feeds.conf.default
 echo 'src-git Jaykwok2999 https://github.com/Jaykwok2999/istoreos-ipk.git;master' >> feeds.conf.default
 # echo 'src-git third https://github.com/jjm2473/openwrt-third' >> feeds.conf.default
 echo 'src-git diskman https://github.com/jjm2473/luci-app-diskman.git;dev' >>feeds.conf.default
