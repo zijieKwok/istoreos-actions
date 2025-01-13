@@ -36,7 +36,7 @@ jobs:
       run: |
 
         rm -rf ./istoreos/tailscale
-        
+        rm -rf ./istoreos/tailscale
          
         git clone https://github.com/immortalwrt/packages.git -b openwrt-24.10 ./istoreos/tmp
         mv ./istoreos/tmp/net/tailscale ./istoreos/
