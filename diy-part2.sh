@@ -16,31 +16,29 @@ sed -i 's/192.168.100.1/192.168.2.1/g' package/base-files/files/bin/config_gener
 # 修改主机名字，把 iStore OS 修改你喜欢的就行（不能纯数字或者使用中文）
 sed -i 's/OpenWrt/iStoreOS/g' package/base-files/files/bin/config_generate
 sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' By JayKwok'/g" package/base-files/files/etc/openwrt_release
-# rm -rf feeds/extraipk/linkease/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
-# cp -af istoreos/index.js feeds/extraipk/linkease/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
-# rm -rf package/base-files/files/etc/banner
-# cp -af feeds/extraipk/patch/diy/banner  package/base-files/files/etc/banner
-# rm -rf feeds/packages/lang/golang
-# git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
-# rm -rf feeds/extraipk/theme
+rm -rf feeds/linkease_nas_luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
+cp -af istoreos/index.js feeds/linkease_nas_luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
+rm -rf package/base-files/files/etc/banner
+cp -af feeds/Jaykwok2999/patch/diy/banner  package/base-files/files/etc/banner
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
+
 
 ##更新FQ
-# rm -rf feeds/packages/net/tailscale/*
-# git clone https://github.com/zijieKwok/jaykwok-ipk -b master/tailscale  feeds/packages/net/tailscale/
-# touch feeds/luci/applications/luci-app-tailscale
-# git clone https://github.com/zijieKwok/jaykwok-ipk -b master/luci-app-tailscale feeds/luc/applications/luci-app-tailscale
-# sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
+rm -rf feeds/packages/net/tailscale/*
+cp -af feeds/Jaykwok2999/tailscale/  feeds/packages/net/tailscale/
+sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 # ttyd 自动登录
 # sed -i "s?/bin/login?/usr/libexec/login.sh?g" ${GITHUB_WORKSPACE}/openwrt/package/feeds/packages/ttyd/files/ttyd.config
 
 ##MosDNS
 # rm -rf feeds/packages/net/mosdns/*
-# cp -af feeds/extraipk/op-mosdns/mosdns/* feeds/packages/net/mosdns/
-# rm -rf feeds/packages/net/v2ray-geodata/*
-# cp -af feeds/extraipk/op-mosdns/v2ray-geodata/* feeds/packages/net/v2ray-geodata/
+# cp -af feeds/Jaykwok2999/op-mosdns/mosdns/* feeds/packages/net/mosdns/
+# rm -rf feeds/Jaykwok2999/net/v2ray-geodata/*
+# cp -af feeds/Jaykwok2999/op-mosdns/v2ray-geodata/* feeds/packages/net/v2ray-geodata/
 
-# rm -rf feeds/luci/applications/luci-app-openclash/*
-# cp -af feeds/extraipk/patch/wall-luci/luci-app-openclash/*  feeds/luci/applications/luci-app-openclash/
+rm -rf feeds/luci/applications/luci-app-openclash/*
+cp -af feeds/Jaykwok2999/patch/wall-luci/luci-app-openclash/*  feeds/luci/applications/luci-app-openclash/
 
 # 添加自定义软件包
 # echo '
