@@ -22,9 +22,11 @@ cp -af istoreos/patches-6.6 target/linux/x86
 rm -rf feeds/linkease_nas_luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
 cp -af istoreos/index.js feeds/linkease_nas_luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
 rm -rf package/base-files/files/etc/banner
-cp -af feeds/Jaykwok2999/patch/diy/banner  package/base-files/files/etc/banner
+cp -af feeds/Jaykwok2999/patch/diy/banner package/base-files/files/etc/banner
 rm -rf package/base-files/files/etc/passwd
-cp -af istoreos/passwd  package/base-files/files/etc/
+cp -af istoreos/passwd package/base-files/files/etc/passwd
+rm -rf package/base-files/files/etc/shadow
+cp -af istoreos/shadow package/base-files/files/etc/shadow
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
 
