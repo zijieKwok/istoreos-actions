@@ -18,6 +18,6 @@ echo 'src-git third_party https://github.com/linkease/istore-packages.git;main' 
 # echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 echo 'src-git Jaykwok2999 https://github.com/Jaykwok2999/istoreos-ipk.git;master' >> feeds.conf.default
 # echo 'src-git third https://github.com/jjm2473/openwrt-third' >> feeds.conf.default
-# echo 'src-git openclash https://github.com/vernesong/OpenClash' >>feeds.conf.default
+echo 'src-git diskman https://github.com/jjm2473/luci-app-diskman.git;dev' >>feeds.conf.default
 # echo 'src-git adguardhome https://github.com/rufengsuixing/luci-app-adguardhome' >>feeds.conf.default
 # echo 'src-git mosdns https://github.com/sbwml/luci-app-mosdns' >>feeds.conf.default
