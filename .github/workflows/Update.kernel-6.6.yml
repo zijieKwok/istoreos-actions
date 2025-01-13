@@ -39,7 +39,7 @@ jobs:
         
          
         git clone --depth=1 https://github.com/openwrt/openwrt.git -b openwrt-24.10
-        mv ./include/kernel-6.6 ./istoreos/kernel-6.6/
+        mv ./include/kernel-6.6 ./kernel-6.6
         rm -rf ./include
 
         
