@@ -36,7 +36,7 @@ jobs:
       run: |
 
         rm -rf ./istoreos/kernel-6.6
-        
+        rm -rf ./istoreos/kernel-6.6
          
         git clone https://github.com/openwrt/openwrt.git -b openwrt-24.10 ./istoreos/tmp
         mv ./istoreos/tmp/include/kernel-6.6 ./istoreos/
