@@ -1,6 +1,6 @@
 #!/bin/bash
 #=================================================
-# DaoDao's script
+# JayKwok's script
 #=================================================             
 
 
@@ -16,14 +16,14 @@ echo -e "msgstr \"控制\"" >> feeds/luci/modules/luci-base/po/zh_Hans/base.po
 sed -i 's/192\.168\.[0-9]*\.[0-9]*/192.168.2.1/g' package/base-files/files/bin/config_generate
 
 ##
-# rm -rf ./feeds/extraipk/theme/luci-theme-argon-18.06
-# rm -rf ./feeds/extraipk/theme/luci-app-argon-config-18.06
-# rm -rf ./feeds/extraipk/theme/luci-theme-design
-# rm -rf ./feeds/extraipk/theme/luci-theme-edge
-# rm -rf ./feeds/extraipk/theme/luci-theme-ifit
-# rm -rf ./feeds/extraipk/theme/luci-theme-opentopd
-# rm -rf ./feeds/extraipk/theme/luci-theme-neobird
-# rm -rf ./feeds/extraipk/patch/luci-app-turboacc
+# rm -rf ./feeds/Jaykwok2999/theme/luci-theme-argon-18.06
+# rm -rf ./feeds/Jaykwok2999/theme/luci-app-argon-config-18.06
+# rm -rf ./feeds/Jaykwok2999/theme/luci-theme-design
+# rm -rf ./feeds/Jaykwok2999/theme/luci-theme-edge
+# rm -rf ./feeds/Jaykwok2999/theme/luci-theme-ifit
+# rm -rf ./feeds/Jaykwok2999/theme/luci-theme-opentopd
+# rm -rf ./feeds/Jaykwok2999/theme/luci-theme-neobird
+# rm -rf ./feeds/Jaykwok2999/patch/luci-app-turboacc
 
 # rm -rf ./package/feeds/extraipk/luci-theme-argon-18.06
 # rm -rf ./package/feeds/extraipk/luci-app-argon-config-18.06
@@ -57,32 +57,32 @@ sed -i "3iuci commit istore" package/emortal/default-settings/files/99-default-s
 
 ##MosDNS
 # rm -rf feeds/packages/net/mosdns/*
-# cp -af feeds/extraipk/op-mosdns/mosdns/* feeds/packages/net/mosdns/
+# cp -af feeds/Jaykwok2999/op-mosdns/mosdns/* feeds/packages/net/mosdns/
 rm -rf feeds/packages/net/v2ray-geodata/*
-cp -af feeds/extraipk/op-mosdns/v2ray-geodata/* feeds/packages/net/v2ray-geodata/
+cp -af feeds/Jaykwok2999/op-mosdns/v2ray-geodata/* feeds/packages/net/v2ray-geodata/
 
 
 ##更新FQ
 # rm -rf feeds/luci/applications/luci-app-passwall/*
-# cp -af feeds/extraipk/patch/wall-luci/luci-app-passwall/*  feeds/luci/applications/luci-app-passwall/
+# cp -af feeds/Jaykwok2999/patch/wall-luci/luci-app-passwall/*  feeds/luci/applications/luci-app-passwall/
 
 # rm -rf feeds/luci/applications/luci-app-ssr-plus/*
-# cp -af feeds/extraipk/patch/wall-luci/luci-app-ssr-plus/*  feeds/luci/applications/luci-app-ssr-plus/
+# cp -af feeds/Jaykwok2999/patch/wall-luci/luci-app-ssr-plus/*  feeds/luci/applications/luci-app-ssr-plus/
 
 rm -rf feeds/luci/applications/luci-app-openclash/*
-cp -af feeds/extraipk/patch/wall-luci/luci-app-openclash/*  feeds/luci/applications/luci-app-openclash/
+cp -af feeds/Jaykwok2999/patch/wall-luci/luci-app-openclash/*  feeds/luci/applications/luci-app-openclash/
 
 ##Adblock
 # rm -rf feeds/luci/applications/luci-app-adblock/*
-# cp -af feeds/extraipk/luci-app-adblock/*  feeds/luci/applications/luci-app-adblock/
+# cp -af feeds/Jaykwok2999/luci-app-adblock/*  feeds/luci/applications/luci-app-adblock/
 
 ##FQ全部调到VPN菜单
 # sed -i 's/services/vpn/g' package/feeds/luci/luci-app-ssr-plus/luasrc/controller/*.lua
 # sed -i 's/services/vpn/g' package/feeds/luci/luci-app-ssr-plus/luasrc/model/cbi/shadowsocksr/*.lua
 # sed -i 's/services/vpn/g' package/feeds/luci/luci-app-ssr-plus/luasrc/view/shadowsocksr/*.htm
-sed -i 's/services/vpn/g' package/feeds/extraipk/luci-app-ssr-plus/luasrc/controller/*.lua
-sed -i 's/services/vpn/g' package/feeds/extraipk/luci-app-ssr-plus/luasrc/model/cbi/shadowsocksr/*.lua
-sed -i 's/services/vpn/g' package/feeds/extraipk/luci-app-ssr-plus/luasrc/view/shadowsocksr/*.htm
+sed -i 's/services/vpn/g' package/feeds/Jaykwok2999/luci-app-ssr-plus/luasrc/controller/*.lua
+sed -i 's/services/vpn/g' package/feeds/Jaykwok2999/luci-app-ssr-plus/luasrc/model/cbi/shadowsocksr/*.lua
+sed -i 's/services/vpn/g' package/feeds/Jaykwok2999/luci-app-ssr-plus/luasrc/view/shadowsocksr/*.htm
 
 sed -i 's/services/vpn/g' package/feeds/luci/luci-app-passwall/luasrc/controller/*.lua
 sed -i 's/services/vpn/g' package/feeds/luci/luci-app-passwall/luasrc/passwall/*.lua
@@ -97,42 +97,42 @@ sed -i 's/services/vpn/g' package/feeds/luci/luci-app-passwall/luasrc/view/passw
 sed -i 's/services/vpn/g' package/feeds/luci/luci-app-passwall/luasrc/view/passwall/rule/*.htm
 sed -i 's/services/vpn/g' package/feeds/luci/luci-app-passwall/luasrc/view/passwall/server/*.htm
 
-sed -i 's/services/vpn/g' package/feeds/extraipk/luci-app-passwall2/luasrc/controller/*.lua
-sed -i 's/services/vpn/g' package/feeds/extraipk/luci-app-passwall2/luasrc/passwall2/*.lua
-sed -i 's/services/vpn/g' package/feeds/extraipk/luci-app-passwall2/luasrc/model/cbi/passwall2/client/*.lua
-sed -i 's/services/vpn/g' package/feeds/extraipk/luci-app-passwall2/luasrc/model/cbi/passwall2/server/*.lua
-sed -i 's/services/vpn/g' package/feeds/extraipk/luci-app-passwall2/luasrc/view/passwall2/app_update/*.htm
-sed -i 's/services/vpn/g' package/feeds/extraipk/luci-app-passwall2/luasrc/view/passwall2/socks_auto_switch/*.htm
-sed -i 's/services/vpn/g' package/feeds/extraipk/luci-app-passwall2/luasrc/view/passwall2/global/*.htm
-sed -i 's/services/vpn/g' package/feeds/extraipk/luci-app-passwall2/luasrc/view/passwall2/haproxy/*.htm
-sed -i 's/services/vpn/g' package/feeds/extraipk/luci-app-passwall2/luasrc/view/passwall2/log/*.htm
-sed -i 's/services/vpn/g' package/feeds/extraipk/luci-app-passwall2/luasrc/view/passwall2/node_list/*.htm
-sed -i 's/services/vpn/g' package/feeds/extraipk/luci-app-passwall2/luasrc/view/passwall2/rule/*.htm
-sed -i 's/services/vpn/g' package/feeds/extraipk/luci-app-passwall2/luasrc/view/passwall2/server/*.htm
+sed -i 's/services/vpn/g' package/feeds/Jaykwok2999/luci-app-passwall2/luasrc/controller/*.lua
+sed -i 's/services/vpn/g' package/feeds/Jaykwok2999/luci-app-passwall2/luasrc/passwall2/*.lua
+sed -i 's/services/vpn/g' package/feeds/Jaykwok2999/luci-app-passwall2/luasrc/model/cbi/passwall2/client/*.lua
+sed -i 's/services/vpn/g' package/feeds/Jaykwok2999/luci-app-passwall2/luasrc/model/cbi/passwall2/server/*.lua
+sed -i 's/services/vpn/g' package/feeds/Jaykwok2999/luci-app-passwall2/luasrc/view/passwall2/app_update/*.htm
+sed -i 's/services/vpn/g' package/feeds/Jaykwok2999/luci-app-passwall2/luasrc/view/passwall2/socks_auto_switch/*.htm
+sed -i 's/services/vpn/g' package/feeds/Jaykwok2999/luci-app-passwall2/luasrc/view/passwall2/global/*.htm
+sed -i 's/services/vpn/g' package/feeds/Jaykwok2999/luci-app-passwall2/luasrc/view/passwall2/haproxy/*.htm
+sed -i 's/services/vpn/g' package/feeds/Jaykwok2999/luci-app-passwall2/luasrc/view/passwall2/log/*.htm
+sed -i 's/services/vpn/g' package/feeds/Jaykwok2999/luci-app-passwall2/luasrc/view/passwall2/node_list/*.htm
+sed -i 's/services/vpn/g' package/feeds/Jaykwok2999/luci-app-passwall2/luasrc/view/passwall2/rule/*.htm
+sed -i 's/services/vpn/g' package/feeds/Jaykwok2999/luci-app-passwall2/luasrc/view/passwall2/server/*.htm
 
 #
-sed -i 's/services/vpn/g' package/feeds/extraipk/luci-app-vssr/luasrc/controller/*.lua
-sed -i 's/services/vpn/g' package/feeds/extraipk/luci-app-vssr/luasrc/model/cbi/vssr/*.lua
-sed -i 's/services/vpn/g' package/feeds/extraipk/luci-app-vssr/luasrc/view/vssr/*.htm
+sed -i 's/services/vpn/g' package/feeds/Jaykwok2999/luci-app-vssr/luasrc/controller/*.lua
+sed -i 's/services/vpn/g' package/feeds/Jaykwok2999/luci-app-vssr/luasrc/model/cbi/vssr/*.lua
+sed -i 's/services/vpn/g' package/feeds/Jaykwok2999/luci-app-vssr/luasrc/view/vssr/*.htm
 
 sed -i 's/services/vpn/g' package/feeds/luci/luci-app-openclash/luasrc/controller/*.lua
 sed -i 's/services/vpn/g' package/feeds/luci/luci-app-openclash/luasrc/*.lua
 sed -i 's/services/vpn/g' package/feeds/luci/luci-app-openclash/luasrc/model/cbi/openclash/*.lua
 sed -i 's/services/vpn/g' package/feeds/luci/luci-app-openclash/luasrc/view/openclash/*.htm
 
-sed -i 's/services/vpn/g' package/feeds/extraipk/luci-app-bypass/luasrc/controller/*.lua
-sed -i 's/services/vpn/g' package/feeds/extraipk/luci-app-bypass/luasrc/model/cbi/bypass/*.lua
-sed -i 's/services/vpn/g' package/feeds/extraipk/luci-app-bypass/luasrc/view/bypass/*.htm
+sed -i 's/services/vpn/g' package/feeds/Jaykwok2999/luci-app-bypass/luasrc/controller/*.lua
+sed -i 's/services/vpn/g' package/feeds/Jaykwok2999/luci-app-bypass/luasrc/model/cbi/bypass/*.lua
+sed -i 's/services/vpn/g' package/feeds/Jaykwok2999/luci-app-bypass/luasrc/view/bypass/*.htm
 
 ###
-cp -af feeds/extraipk/patch/rockchip/etc/opkg target/linux/rockchip/armv8/base-files/etc/
+cp -af feeds/Jaykwok2999/patch/rockchip/etc/opkg target/linux/rockchip/armv8/base-files/etc/
 
 
 ## fix_ss_libv
 rm -rf package/libs/mbedtls
 rm -rf package/libs/uclient
 rm -rf package/libs/ustream-ssl
-cp -af feeds/extraipk/patch/fix_ss_libv/*  package/libs/
+cp -af feeds/Jaykwok2999/patch/fix_ss_libv/*  package/libs/
 
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
