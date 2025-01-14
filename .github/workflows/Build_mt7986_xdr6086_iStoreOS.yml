@@ -107,7 +107,7 @@ jobs:
         name: XDR6086-OpenWrt
         path: ARM_Out/*.bin
 
-    - name:上传配置
+    - name: 上传配置
       uses: actions/upload-artifact@main
       with:
         name: XDR6086-config
