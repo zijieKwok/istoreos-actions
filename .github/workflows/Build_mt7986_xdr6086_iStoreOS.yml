@@ -20,7 +20,7 @@ jobs:
     - name: Clone Repository
       uses: actions/checkout@v4
 
-    - name: Initialization environment
+    - name: 初始化编译环境
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
