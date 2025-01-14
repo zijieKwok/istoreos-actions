@@ -40,7 +40,7 @@ cp -af $GITHUB_WORKSPACE/istoreos/shadow package/base-files/files/etc/
 ##更新tailscale
 # rm -rf feeds/packages/net/tailscale/*
 # cp -af $GITHUB_WORKSPACE/istoreos/tailscale/*  feeds/packages/net/tailscale/
-sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
+# sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 # ttyd 自动登录
 # sed -i "s?/bin/login?/usr/libexec/login.sh?g" ${GITHUB_WORKSPACE}/openwrt/package/feeds/packages/ttyd/files/ttyd.config
 
