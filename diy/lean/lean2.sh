@@ -24,7 +24,7 @@ sed -i 's/192\.168\.[0-9]*\.[0-9]*/192.168.1.1/g' package/base-files/files/bin/c
 sed -i 's/192\.168\.[0-9]*\.[0-9]*/192.168.1.1/g' package/base-files/luci2/bin/config_generate
 
 ##清除默认密码password
-sed -i '/V4UetPzk$CYXluq4wUazHjmCDBCqXF/d' package/lean/default-settings/files/zzz-default-settings
+# sed -i '/V4UetPzk$CYXluq4wUazHjmCDBCqXF/d' package/lean/default-settings/files/zzz-default-settings
 
 
 
