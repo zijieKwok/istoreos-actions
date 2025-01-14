@@ -26,7 +26,7 @@ sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' By JayKwok'/g" package/base-
 rm -rf feeds/linkease_nas_luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
 cp -af $GITHUB_WORKSPACE/istoreos/index.js feeds/linkease_nas_luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
 rm -rf package/base-files/files/etc/banner
-cp -af feeds/Jaykwok2999/patch/diy/banner package/base-files/files/etc/
+cp -af $GITHUB_WORKSPACE/istoreos/banner package/base-files/files/etc/
 rm -rf feeds/third/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 cp -af $GITHUB_WORKSPACE/istoreos/files/www/luci-static/argon/background/bg1.jpg feeds/third/luci-theme-argon/htdocs/luci-static/argon/img/
 rm -rf package/base-files/files/etc/passwd
