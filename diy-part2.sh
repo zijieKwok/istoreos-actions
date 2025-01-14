@@ -21,6 +21,7 @@ rm -rf feeds/Jaykwok2999/luci-app-bypass
 rm -rf feeds/third_party/luci-app-LingTiGameAcc
 rm -rf feeds/Jaykwok2999/luci-app-ssr-plus
 rm -rf feeds/Jaykwok2999/luci-app-turboacc
+rm -rf target/linux/x86/patches-6.6/*
 cp -af $GITHUB_WORKSPACE/istoreos/patches-6.6/* target/linux/x86/patches-6.6/
 rm -rf feeds/linkease_nas_luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
 cp -af $GITHUB_WORKSPACE/istoreos/index.js feeds/linkease_nas_luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
