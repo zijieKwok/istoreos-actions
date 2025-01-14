@@ -43,20 +43,20 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci-n
 
 
 ##加入作者信息
-sed -i "s/DISTRIB_DESCRIPTION='*.*'/DISTRIB_DESCRIPTION='AE86Wrt-$(date +%Y%m%d)'/g" package/lean/default-settings/files/zzz-default-settings   
-sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' By DaoDao'/g" package/lean/default-settings/files/zzz-default-settings
-cp -af feeds/2305ipk/patch/diy/banner  package/base-files/files/etc/banner
+# sed -i "s/DISTRIB_DESCRIPTION='*.*'/DISTRIB_DESCRIPTION='AE86Wrt-$(date +%Y%m%d)'/g" package/lean/default-settings/files/zzz-default-settings   
+# sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' By DaoDao'/g" package/lean/default-settings/files/zzz-default-settings
+# cp -af feeds/2305ipk/patch/diy/banner  package/base-files/files/etc/banner
 
-sed -i "2iuci set istore.istore.channel='ae86_daodao'" package/lean/default-settings/files/zzz-default-settings
-sed -i "3iuci commit istore" package/lean/default-settings/files/zzz-default-settings
+# sed -i "2iuci set istore.istore.channel='ae86_daodao'" package/lean/default-settings/files/zzz-default-settings
+# sed -i "3iuci commit istore" package/lean/default-settings/files/zzz-default-settings
 
 
 ##更改主机名
-sed -i "s/hostname='.*'/hostname='AE86Wrt'/g" package/base-files/files/bin/config_generate
-sed -i "s/hostname='.*'/hostname='AE86Wrt'/g" package/base-files/luci2/bin/config_generate
+# sed -i "s/hostname='.*'/hostname='AE86Wrt'/g" package/base-files/files/bin/config_generate
+# sed -i "s/hostname='.*'/hostname='AE86Wrt'/g" package/base-files/luci2/bin/config_generate
 
 ##WiFi
-sed -i "s/LEDE/AE86/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
+# sed -i "s/LEDE/AE86/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 ### fix speed
 sed -i "s/speed = <2500>;/speed = <1000>;/g" target/linux/mediatek/dts/mt7622-*.dts
@@ -68,12 +68,12 @@ sed -i "s/speed = <2500>;/speed = <1000>;/g" target/linux/mediatek/dts/mt7623a-*
 
 
 ##
-sed -i '/option Interface/d'  package/network/services/dropbear/files/dropbear.config
+# sed -i '/option Interface/d'  package/network/services/dropbear/files/dropbear.config
 
 
 ## rockchip
 cp -af feeds/2305ipk/patch/rockchip/*  target/linux/rockchip/armv8/base-files/
 
 ## golang 为 1.23.x
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
+# rm -rf feeds/packages/lang/golang
+# git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
