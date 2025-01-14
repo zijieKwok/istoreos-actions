@@ -17,10 +17,10 @@ sed -i 's/192.168.100.1/192.168.2.1/g' package/istoreos-files/Makefile
 sed -i 's/OpenWrt/iStoreOS/g' package/base-files/files/bin/config_generate
 sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' By JayKwok'/g" package/base-files/files/etc/openwrt_release
 sed -i 's/fw0.koolcenter.com/ota.5588999.xyz/g' package/diy/luci-app-ota/root/bin/ota
-rm -rf feeds/Jaykwok2999/luci-app-bypass
-rm -rf feeds/third_party/luci-app-LingTiGameAcc
-rm -rf feeds/Jaykwok2999/luci-app-ssr-plus
-rm -rf feeds/Jaykwok2999/luci-app-turboacc
+# rm -rf feeds/Jaykwok2999/luci-app-bypass
+# rm -rf feeds/third_party/luci-app-LingTiGameAcc
+# rm -rf feeds/Jaykwok2999/luci-app-ssr-plus
+# rm -rf feeds/Jaykwok2999/luci-app-turboacc
 # rm -rf target/linux/x86/patches-6.6/*
 # cp -af $GITHUB_WORKSPACE/istoreos/patches-6.6/* target/linux/x86/patches-6.6/
 rm -rf feeds/linkease_nas_luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
@@ -51,8 +51,8 @@ sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/package
 ##MosDNS
 # rm -rf feeds/packages/net/mosdns/*
 # cp -af feeds/Jaykwok2999/op-mosdns/mosdns/* feeds/packages/net/mosdns/
-rm -rf feeds/Jaykwok2999/net/v2ray-geodata/*
-cp -af feeds/Jaykwok2999/op-mosdns/v2ray-geodata/* feeds/packages/net/v2ray-geodata/
+# rm -rf feeds/Jaykwok2999/net/v2ray-geodata/*
+# cp -af feeds/Jaykwok2999/op-mosdns/v2ray-geodata/* feeds/packages/net/v2ray-geodata/
 
 # rm -rf feeds/luci/applications/luci-app-openclash/*
 # cp -af feeds/Jaykwok2999/patch/wall-luci/luci-app-openclash/*  feeds/luci/applications/luci-app-openclash/
