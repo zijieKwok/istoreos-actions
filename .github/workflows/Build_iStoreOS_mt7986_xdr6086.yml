@@ -26,7 +26,7 @@ on:
 env:
   REPO_URL: https://github.com/istoreos/istoreos
   REPO_BRANCH: istoreos-24.10
-#  FEEDS_CONF: feeds.conf
+  FEEDS_CONF: diy/mt798x/feeds.conf
   CONFIG_FILE: configs/ARM/mt798x/.config
   DIY_P1_SH: diy/mt798x/diy-part1.sh
   DIY_P2_SH: diy/mt798x/diy-part2.sh
