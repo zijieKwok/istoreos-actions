@@ -1,0 +1,132 @@
+name: Build_mt7986_xdr6086_iStoreOS
+
+on: 
+  repository_dispatch:
+  workflow_dispatch:
+
+# 定时触发编译
+  schedule:
+   # - cron: 11 22 * * 4
+    - cron: 0 16 * * *
+
+# 点赞☆Star触发编译
+#  watch:
+#    types: [started]
+
+jobs:
+  Build_mt7986_xdr6086_iStoreOS:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Clone Repository
+      uses: actions/checkout@v4
+
+    - name: 初始化编译环境
+      env:
+        DEBIAN_FRONTEND: noninteractive
+      run: |
+        sudo timedatectl set-timezone "Asia/Shanghai" 
+        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+        sudo docker image prune --all --force
+        sudo -E apt-get -qq update
+        sudo -E apt-get -qq install ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libfuse-dev libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libpython3-dev libreadline-dev libssl-dev libtool lrzsz mkisofs msmtp ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pyelftools python3-setuptools qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
+        sudo -E apt-get -qq autoremove --purge
+        sudo -E apt-get -qq clean
+        sudo timedatectl set-timezone "$TZ"
+        sudo mkdir -p /workdir
+        sudo chown $USER:$GROUPS /workdir
+        
+    - name: 下载源码
+      env: 
+        REPO_URL: https://github.com/istoreos/istoreos
+        REPO_BRANCH: istoreos-24.10
+
+
+      run: |
+        git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+        cd openwrt
+        cp -f ../diy/mt798x/diy-part1.sh ./
+        chmod +x ./diy-part1.sh && ./diy-part1.sh
+
+    - name: 下载更新feeds
+      working-directory: ./openwrt
+      run: |
+        ./scripts/feeds update -a
+
+        ./scripts/feeds install -a
+
+        cp -f ../diy/mt798x/diy-part2.sh ./        
+        chmod +x ./diy-part2.sh && ./diy-part2.sh      
+
+        sed -i "s/DISTRIB_DESCRIPTION='*.*'/DISTRIB_DESCRIPTION='TP-Link_TL-XDR6086-$(date +%Y%m%d)'/g"  package/base-files/files/etc/openwrt_release
+              
+    - name: 加载自定义ipk - Build_mt7986_xdr6086_2410
+      env:
+        CONFIG_FILE: './configs/ARM/mt798x/.config'
+      run: |
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        cd openwrt && make defconfig
+        
+    - name: 下载软件包
+      working-directory: ./openwrt
+      run: |
+        make download -j$(nproc)
+        find dl -size -1024c -exec ls -l {} \;
+        find dl -size -1024c -exec rm -f {} \;
+
+    - name: 编译固件
+      working-directory: ./openwrt
+      run: |      
+        make -j$(nproc) V=s
+        
+    - name: Assemble Artifact
+      id: assemble_artifact
+      run: |
+        rm -rf ./ARM_Out
+        mkdir -p ./ARM_Out/
+        cp -a ./openwrt/.config ./ARM_Out/.config
+        
+        getmd5()
+        {
+        md5sum=`md5sum $1`
+        md5=`echo ${md5sum% *}`
+        md5=`echo ${md5:0:10}`
+        }
+        
+        rom=openwrt/bin/targets/mediatek/mt7986/openwrt-mediatek-mt7986-tplink_tl-xdr6086-squashfs-sysupgrade.bin
+        getmd5 $rom        
+        cp -a $rom ./ARM_Out/TP-Link_TL-xdr6086-iStoreOS-$(date +%Y%m%d)_${md5}.bin
+               
+    - name: Upload Firmwares
+      uses: actions/upload-artifact@main
+      with:
+        name: XDR6086-OpenWrt
+        path: ARM_Out/*.bin
+
+    - name: Upload config
+      uses: actions/upload-artifact@main
+      with:
+        name: XDR6086-config
+        path: ARM_Out/.config
+
+    - name: Upload Packages
+      uses: actions/upload-artifact@main
+      with:
+        name: XDR6086-Packages
+        path: openwrt/bin/packages
+        
+    - name: Generate Tag & Release Name
+      id: generate_name
+      run: |
+        time=$(date +%Y%m%d%H%M%S)
+        release_tag="$time"
+        release_name="TP-Link_TL-XDR6086-iStoreOS-$(date +%Y%m%d)"
+        echo "release_name=$release_name" >> $GITHUB_OUTPUT
+        echo "release_tag=$release_tag" >> $GITHUB_OUTPUT      
+
+    - name: Create Release & Upload
+      uses: ncipollo/release-action@v1.14.0
+      with:
+        artifacts: ARM_Out/*.bin
+        name: ${{ steps.generate_name.outputs.release_name }}
+        tag: ${{ steps.generate_name.outputs.release_tag }}
+        token: ${{ secrets.GITHUB_TOKEN }}
