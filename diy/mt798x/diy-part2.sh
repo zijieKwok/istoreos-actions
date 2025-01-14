@@ -42,7 +42,7 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci-n
 
 ##更改主机名
 sed -i "s/hostname='.*'/hostname='iStoreOS'/g" package/base-files/files/bin/config_generate
-
+sed -i "s/DISTRIB_DESCRIPTION='*.*'/DISTRIB_DESCRIPTION='TP-Link_TL-XDR6086-$(date +%Y%m%d)'/g"  package/base-files/files/etc/openwrt_release
 ##加入作者信息
 sed -i "s/DISTRIB_DESCRIPTION='*.*'/DISTRIB_DESCRIPTION='OpenWrt-$(date +%Y%m%d)'/g"  package/base-files/files/etc/openwrt_release
 sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' By JayKwok'/g" package/base-files/files/etc/openwrt_release
