@@ -21,8 +21,8 @@ rm -rf feeds/Jaykwok2999/luci-app-bypass
 rm -rf feeds/third_party/luci-app-LingTiGameAcc
 rm -rf feeds/Jaykwok2999/luci-app-ssr-plus
 rm -rf feeds/Jaykwok2999/luci-app-turboacc
-rm -rf target/linux/x86/patches-6.6/*
-cp -af $GITHUB_WORKSPACE/istoreos/patches-6.6/* target/linux/x86/patches-6.6/
+# rm -rf target/linux/x86/patches-6.6/*
+# cp -af $GITHUB_WORKSPACE/istoreos/patches-6.6/* target/linux/x86/patches-6.6/
 rm -rf feeds/linkease_nas_luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
 cp -af $GITHUB_WORKSPACE/istoreos/index.js feeds/linkease_nas_luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
 rm -rf package/base-files/files/etc/banner
@@ -33,13 +33,13 @@ rm -rf package/base-files/files/etc/passwd
 cp -af $GITHUB_WORKSPACE/istoreos/passwd package/base-files/files/etc/
 rm -rf package/base-files/files/etc/shadow
 cp -af $GITHUB_WORKSPACE/istoreos/shadow package/base-files/files/etc/
-rm -rf feeds/packages/lang/golang/*
-cp -af $GITHUB_WORKSPACE/istoreos/golang/* feeds/packages/lang/golang/
+# rm -rf feeds/packages/lang/golang/*
+# cp -af $GITHUB_WORKSPACE/istoreos/golang/* feeds/packages/lang/golang/
 
 
 ##更新tailscale
-rm -rf feeds/packages/net/tailscale/*
-cp -af $GITHUB_WORKSPACE/istoreos/tailscale/*  feeds/packages/net/tailscale/
+# rm -rf feeds/packages/net/tailscale/*
+# cp -af $GITHUB_WORKSPACE/istoreos/tailscale/*  feeds/packages/net/tailscale/
 sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 # ttyd 自动登录
 # sed -i "s?/bin/login?/usr/libexec/login.sh?g" ${GITHUB_WORKSPACE}/openwrt/package/feeds/packages/ttyd/files/ttyd.config
