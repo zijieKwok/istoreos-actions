@@ -106,55 +106,76 @@ jobs:
         [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
         echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
 
-    - name: Assemble Artifact
-      id: assemble_artifact
+    - name: 检查磁盘空间
+      if: (!cancelled())
+      run: df -hT
+
+    - name: 上传bin目录
+      uses: actions/upload-artifact@main
+      if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
+      with:
+        name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        path: openwrt/bin
+
+    - name: 整理文件
+      id: organize
+      if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: |
-        rm -rf ./ARM_Out
-        mkdir -p ./ARM_Out/
-        cp -a ./openwrt/.config ./ARM_Out/mt7986_xdr6086_2410.config
-        
-        getmd5()
-        {
-        md5sum=`md5sum $1`
-        md5=`echo ${md5sum% *}`
-        md5=`echo ${md5:0:10}`
-        }
-        
-        rom=openwrt/bin/targets/mediatek/mt7986/openwrt-mediatek-mt7986-tplink_tl-xdr6086-squashfs-sysupgrade.bin
-        getmd5 $rom        
-        cp -a $rom ./ARM_Out/TP-Link_TL-xdr6086-2410-$(date +%Y%m%d)_${md5}.bin
-               
-    - name: Upload Firmwares
-      uses: actions/upload-artifact@main
-      with:
-        name: XDR6086-OpenWrt
-        path: ARM_Out/*.bin
+        cd openwrt/bin/targets/*/*
+        rm -rf packages
+        echo "FIRMWARE=$PWD" >> $GITHUB_ENV
+        echo "status=success" >> $GITHUB_OUTPUT
 
-    - name: Upload config
+    - name: 上传文件目录
       uses: actions/upload-artifact@main
+      if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: XDR6086-config
-        path: ARM_Out/mt7986_xdr6086_2410.config
+        name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        path: ${{ env.FIRMWARE }}
 
-    - name: Upload Packages
-      uses: actions/upload-artifact@main
-      with:
-        name: XDR6086-Packages
-        path: openwrt/bin/packages
-        
-    - name: Generate Tag & Release Name
-      id: generate_name
+    - name: 生成发布标签
+      id: tag
+      if: steps.compile.outputs.status == 'success' && env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        time=$(date +%Y%m%d%H%M%S)
-        release_tag="$time"
-        release_name="TP-Link_TL-XDR6086-2410-$(date +%Y%m%d)"
-        echo "release_name=$release_name" >> $GITHUB_OUTPUT
-        echo "release_tag=$release_tag" >> $GITHUB_OUTPUT      
+        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H.%M")"
+        touch release.txt
+        echo "
+        💻 架构: mediatek_filogic/TL-XDR6086
 
-    - name: Create Release & Upload
-      uses: ncipollo/release-action@v1.14.0
+        📂 源码: ${{ env.REPO_URL }}
+
+        🌳 分支: istoreos-24.10
+
+        ⏱️ 编译时间: $(date +"%Y年%m月%d日%H时%M分")
+
+        🌐 管理地址: 192.168.2.1
+
+        👤 用户名: root
+
+        🔒 密码: password " >> release.txt
+        echo "::set-output name=status::success"
+
+    - name: 上传固件到release
+      uses: softprops/action-gh-release@master
+      if: steps.tag.outputs.status == 'success' && !cancelled()
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        artifacts: ARM_Out/*.bin
-        name: ${{ steps.generate_name.outputs.release_name }}
-        tag: ${{ steps.generate_name.outputs.release_tag }}
-        token: ${{ secrets.GITHUB_TOKEN }}
+        tag_name: ${{ steps.tag.outputs.release_tag }}
+        body_path: release.txt
+        files: ${{ env.FIRMWARE }}/*
+
+    - name: 删除运行记录
+      uses: Mattraks/delete-workflow-runs@main
+      with:
+        retain_days: 0
+        keep_minimum_runs: 2
+
+    - name: 删除自动发布的旧固件
+      uses: dev-drprasad/delete-older-releases@master
+      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+      with:
+        keep_latest: 3
+        delete_tags: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
