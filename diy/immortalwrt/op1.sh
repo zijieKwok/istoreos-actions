@@ -3,4 +3,4 @@
 # DaoDao's script
 #=================================================
 ##添加自己的插件库
-echo -e "\nsrc-git extraipk https://github.com/xiangfeidexiaohuo/extra-ipk" >> feeds.conf.default
+echo -e "\nsrc-git Jaykwok2999 https://github.com/Jaykwok2999/istoreos-ipk" >> feeds.conf.default
