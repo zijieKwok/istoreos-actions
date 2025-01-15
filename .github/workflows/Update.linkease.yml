@@ -1,0 +1,69 @@
+name: Update.linkease
+
+on: 
+  repository_dispatch:
+  workflow_dispatch:
+
+# 定时触发编译
+#  schedule:
+#    - cron: 0 */1 * * *
+
+# 点赞☆Star触发编译
+#  watch:
+#    types: [started]
+
+jobs:
+  Update:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Clone Repository
+      uses: actions/checkout@v4
+
+    - name: Set git
+      run : |
+        git config --global user.email "109743406+zijieKwok@users.noreply.github.com"
+        git config --global user.name "zijieKwok"
+        sudo timedatectl set-timezone "Asia/Shanghai"
+
+    - name: Delete workflow runs
+      uses: Mattraks/delete-workflow-runs@main
+      continue-on-error: true
+      with:
+        retain_days: 1
+        keep_minimum_runs: 0  
+        
+    - name: Update
+      run: |
+
+        rm -rf ./linkease/*
+        
+         
+        git clone https://github.com/linkease/nas-packages ./linkease/nas-packages
+        mv ./linkease/nas-packages/multimedia/ffmpeg-remux ./linkease/nas-packages/
+        mv ./linkease/nas-packages/network/services/* ./linkease/nas-packages/
+        rm -rf ./linkease/nas-packages/multimedia
+        rm -rf ./linkease/nas-packages/network
+        rm -rf ./linkease/nas-packages/.git
+        rm -rf ./linkease/nas-packages/README.md
+        
+        git clone https://github.com/linkease/istore ./linkease/iStore
+        mv ./linkease/iStore/luci/*  ./linkease/luci/
+        rm -rf ./linkease/iStore
+
+        git clone https://github.com/linkease/istore-ui ./linkease/istore-ui
+        mv ./linkease/istore-ui/app-store-ui ./linkease/luci/
+        rm -rf ./linkease/istore-ui
+
+        git clone https://github.com/jjm2473/luci-theme-argon ./linkease/luci-theme-argon
+        mv ./linkease/* ./linkease/luci-theme-argon/
+        rm -rf ./linkease/luci-theme-argon
+
+
+
+        
+    - name: Apply
+      run: |
+        git add .
+        git commit -m "Auto Sync: $(date +%Y-%m-%d" "%H:%M)"
+        git push -f 
+              
