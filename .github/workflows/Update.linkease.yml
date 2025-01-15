@@ -38,6 +38,10 @@ jobs:
         rm -rf ./linkease/*
         
          
+        git clone https://github.com/linkease/nas-packages-luci ./linkease/nas-packages-luci
+        mv ./linkease/nas-packages-luci/luci ./linkease/
+        rm -rf ./linkease/nas-packages-luci
+        
         git clone https://github.com/linkease/nas-packages ./linkease/nas-packages
         mv ./linkease/nas-packages/multimedia/ffmpeg-remux ./linkease/nas-packages/
         mv ./linkease/nas-packages/network/services/* ./linkease/nas-packages/
