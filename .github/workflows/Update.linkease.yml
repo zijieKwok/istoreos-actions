@@ -54,9 +54,9 @@ jobs:
         mv ./linkease/istore-ui/app-store-ui ./linkease/luci/
         rm -rf ./linkease/istore-ui
 
-        git clone https://github.com/jjm2473/luci-theme-argon ./linkease/luci-theme-argon
-        mv ./linkease/* ./linkease/luci-theme-argon/
-        rm -rf ./linkease/luci-theme-argon
+        # git clone https://github.com/jjm2473/luci-theme-argon ./linkease/luci-theme-argon
+        # mv ./linkease/theme/luci-theme-argon/* ./linkease/luci-theme-argon/
+        # rm -rf ./linkease/theme
 
 
 
