@@ -74,10 +74,7 @@ jobs:
 
     - name: 更新feeds
       run: cd openwrt && ./scripts/feeds update -a
-
-    - name: 安装feeds
-      run: cd openwrt && ./scripts/feeds install -a
-
+      
     - name: 加载自定义配置
       run: |
         [ -e files ] && mv files openwrt/files
@@ -85,6 +82,9 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
+
+    - name: 安装feeds
+      run: cd openwrt && ./scripts/feeds install -a
 
     - name: 下载软件包
       id: package
