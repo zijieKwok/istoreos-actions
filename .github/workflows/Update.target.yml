@@ -37,7 +37,7 @@ jobs:
         rm -rf ./istoreos/target
         
          
-        git clone https://github.com/immortalwrt/immortalwrt -b openwrt-24.10 ./istoreos/tmp
+        git clone https://github.com/openwrt/openwrt -b openwrt-24.10 ./istoreos/tmp
         mv ./istoreos/tmp/target ./istoreos/
         rm -rf ./istoreos/tmp
 
