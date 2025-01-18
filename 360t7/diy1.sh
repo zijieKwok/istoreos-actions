@@ -11,5 +11,5 @@
 #
 
 # Uncomment a feed source
-echo -e "\nsrc-git Jaykwok2999 https://github.com/zijieKwok/jaykwok-ipk" >> feeds.conf.default
+# echo -e "\nsrc-git Jaykwok2999 https://github.com/zijieKwok/jaykwok-ipk" >> feeds.conf.default
 # Add feed sources
