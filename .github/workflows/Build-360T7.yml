@@ -16,8 +16,8 @@ on:
      - cron: '0 4 * * *'
 
 env:
-  REPO_URL: https://github.com/zijieKwok/istoreos
-  REPO_BRANCH: istoreos-24.10
+  REPO_URL: https://github.com/zijieKwok/immortalwrt-mt798x
+  REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: 360T7/feeds.conf.default
   CONFIG_FILE: 360T7/.config
   DIY_P1_SH: 360T7/diy1.sh
