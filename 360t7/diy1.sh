@@ -13,3 +13,6 @@
 # Uncomment a feed source
 # echo -e "\nsrc-git Jaykwok2999 https://github.com/zijieKwok/jaykwok-ipk" >> feeds.conf.default
 # Add feed sources
+echo 'src-git store https://github.com/linkease/istore;main' >>feeds.conf.default
+echo 'src-git linkease_nas https://github.com/linkease/nas-packages.git;master' >>feeds.conf.default
+echo 'src-git linkease_nas_luci https://github.com/linkease/nas-packages-luci.git;main' >>feeds.conf.default
