@@ -135,11 +135,11 @@ jobs:
         echo "
         ✎ 插件: $(grep "CONFIG_PACKAGE_luci-app-\(.*\)=y" openwrt/.config | sed "s/CONFIG_PACKAGE_luci-app-\(.*\)=y/\1/g" | grep -v "_\|arpbind\|autoreboot\|firewall\|mtk\|opkg")
 
-        💻 架构: ${{ matrix.ARCHITECTURE }}
+        💻 架构: 	mediatek/mt7981
 
         📂 源码: ${{ env.REPO_URL }}
 
-        🌳 分支: ${{ matrix.REPO_BRANCH }}
+        🌳 分支: hanwckf/immortalwrt-mt798x
 
         ⏱️ 编译时间: $(date +"%Y年%m月%d日%H时%M分")
 
