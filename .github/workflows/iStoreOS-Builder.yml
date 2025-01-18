@@ -35,12 +35,13 @@ env:
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
   GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
 jobs:
   build:
     runs-on: ubuntu-22.04
 
     steps:
-    - name: 准备完成
+    - name: 检查项目分支
       uses: actions/checkout@main
 
     - name: 初始化编译环境
@@ -57,11 +58,11 @@ jobs:
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
 
-    - name: 克隆源码
+    - name: 下载源码
       working-directory: /workdir
       run: |
         df -hT $PWD
-        git clone $REPO_URL -b ${{ matrix.REPO_BRANCH }} openwrt
+        git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
     - name: 缓存构建动作
