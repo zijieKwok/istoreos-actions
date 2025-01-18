@@ -24,7 +24,7 @@ sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/package
 # sed -i "s/ImmortalWrt-5G/OpenWrt_5G/g" package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
 ##更新FQ
 rm -rf feeds/packages/net/tailscale/*
-cp -af feeds/Jaykwok2999/tailscale/*  feeds/packages/net/tailscale/
+cp -af $GITHUB_WORKSPACE/istoreos/tailscale/*  feeds/packages/net/tailscale/
 
 ##MosDNS
 rm -rf feeds/packages/net/mosdns/*
