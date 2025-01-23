@@ -18,8 +18,6 @@ sed -i 's/192.168.100.1/192.168.2.1/g' package/istoreos-files/Makefile
 sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' By JayKwok'/g" package/base-files/files/etc/openwrt_release
 rm -rf package/diy/luci-app-ota/root/bin/ota
 cp -af feeds/Jaykwok2999/patch/diy/ota package/diy/luci-app-ota/root/bin/
-rm -rf feeds/linkease_nas_luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
-cp -af feeds/Jaykwok2999/patch/diy/index.js feeds/linkease_nas_luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
 rm -rf package/base-files/files/etc/banner
 cp -af feeds/Jaykwok2999/patch/diy/banner package/base-files/files/etc/
 rm -rf feeds/third/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
@@ -28,13 +26,11 @@ rm -rf package/base-files/files/etc/passwd
 cp -af feeds/Jaykwok2999/patch/diy/passwd package/base-files/files/etc/
 rm -rf package/base-files/files/etc/shadow
 cp -af feeds/Jaykwok2999/patch/diy/shadow package/base-files/files/etc/
-# rm -rf feeds/packages/lang/golang
-# cp -af feeds/Jaykwok2999/patch/diy/golang/ feeds/packages/lang/golang/
 
 
 ##更新tailscale
 # rm -rf feeds/packages/net/tailscale/*
-# cp -af $GITHUB_WORKSPACE/istoreos/tailscale/*  feeds/packages/net/tailscale/
+# cp -af feeds/Jaykwok2999/tailscale/*  feeds/packages/net/tailscale/
 # sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 # ttyd 自动登录
 # sed -i "s?/bin/login?/usr/libexec/login.sh?g" ${GITHUB_WORKSPACE}/openwrt/package/feeds/packages/ttyd/files/ttyd.config
