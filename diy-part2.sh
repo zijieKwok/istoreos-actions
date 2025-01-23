@@ -16,13 +16,8 @@ sed -i 's/192.168.100.1/192.168.2.1/g' package/istoreos-files/Makefile
 # 修改主机名字，把 iStore OS 修改你喜欢的就行（不能纯数字或者使用中文）
 # sed -i 's/OpenWrt/iStoreOS/g' package/base-files/files/bin/config_generate
 sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' By JayKwok'/g" package/base-files/files/etc/openwrt_release
-# sed -i 's/fw0.koolcenter.com/ota.5588999.xyz/g' package/diy/luci-app-ota/root/bin/ota
-# rm -rf package/diy/luci-app-ota/root/bin/ota
-# rm -rf feeds/third_party/luci-app-LingTiGameAcc
-# rm -rf feeds/Jaykwok2999/luci-app-ssr-plus
-# rm -rf feeds/Jaykwok2999/luci-app-turboacc
-# rm -rf target/linux/x86/patches-6.6/*
-# cp -af $GITHUB_WORKSPACE/istoreos/patches-6.6/* target/linux/x86/patches-6.6/
+rm -rf package/diy/luci-app-ota/root/bin/ota
+cp -af feeds/Jaykwok2999/patch/diy/ota package/diy/luci-app-ota/root/bin/
 rm -rf feeds/linkease_nas_luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
 cp -af feeds/Jaykwok2999/patch/diy/index.js feeds/linkease_nas_luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
 rm -rf package/base-files/files/etc/banner
@@ -33,8 +28,8 @@ rm -rf package/base-files/files/etc/passwd
 cp -af feeds/Jaykwok2999/patch/diy/passwd package/base-files/files/etc/
 rm -rf package/base-files/files/etc/shadow
 cp -af feeds/Jaykwok2999/patch/diy/shadow package/base-files/files/etc/
-# rm -rf feeds/packages/lang/golang/*
-# cp -af feeds/Jaykwok2999/patch/diy/golang/* feeds/packages/lang/golang/
+# rm -rf feeds/packages/lang/golang
+# cp -af feeds/Jaykwok2999/patch/diy/golang/ feeds/packages/lang/golang/
 
 
 ##更新tailscale
