@@ -30,7 +30,7 @@ cp -af feeds/Jaykwok2999/patch/diy/shadow package/base-files/files/etc/
 
 ##更新tailscale
 # rm -rf feeds/packages/net/tailscale/*
-# cp -af feeds/Jaykwok2999/tailscale/*  feeds/packages/net/tailscale/
+# cp -af feeds/Jaykwok2999/tailscale/tailscale/*  feeds/packages/net/tailscale/
 # sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 # ttyd 自动登录
 # sed -i "s?/bin/login?/usr/libexec/login.sh?g" ${GITHUB_WORKSPACE}/openwrt/package/feeds/packages/ttyd/files/ttyd.config
