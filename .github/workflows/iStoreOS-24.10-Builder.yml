@@ -24,10 +24,10 @@ on:
 #   - cron: 0 16 * * *
 
 env:
-  REPO_URL: https://github.com/istoreos/istoreos
+  REPO_URL: https://github.com/zijieKwok/istoreos
   REPO_BRANCH: istoreos-24.10
-  FEEDS_CONF: x86-alpha/feeds.conf
-  CONFIG_FILE: x86-alpha/.config
+  FEEDS_CONF: feeds.conf
+  CONFIG_FILE: .config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: true
