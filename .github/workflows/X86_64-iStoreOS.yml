@@ -8,7 +8,7 @@ on:
 env:
   REPO_URL: https://github.com/istoreos/istoreos
   REPO_BRANCH: istoreos-24.10
-  CONFIG_FILE: configs/x86_86_iStoreOS.config
+  CONFIG_FILE: .config
   DIY_SCRIPT: diy/diy-istoreos.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
