@@ -204,7 +204,7 @@ git clone --depth=1 https://github.com/sirpdboy/luci-app-netwizard package/luci-
 
 # 修改名称
 echo -e "${YELLOW}修改名称${NC}"
-sed -i 's/OpenWrt/ZeroWrt/' package/base-files/files/bin/config_generate
+sed -i 's/OpenWrt/iStoreOS/' package/base-files/files/bin/config_generate
 
 # Theme
 echo -e "${YELLOW}Theme${NC}"
@@ -259,7 +259,7 @@ sed -i 's/2.openwrt.pool.ntp.org/time1.cloud.tencent.com/g' package/base-files/f
 sed -i 's/3.openwrt.pool.ntp.org/time2.cloud.tencent.com/g' package/base-files/files/bin/config_generate
 
 # ZeroWrt选项菜单
-echo -e "${YELLOW}ZeroWrt选项菜单${NC}"
+echo -e "${YELLOW}iStoreOS选项菜单${NC}"
 mkdir -p files/bin
 curl -L -o files/bin/ZeroWrt https://git.kejizero.online/zhao/files/raw/branch/main/bin/ZeroWrt
 chmod +x files/bin/ZeroWrt
@@ -286,14 +286,14 @@ curl -L -o files/etc/config/nginx https://git.kejizero.online/zhao/files/raw/bra
 # 加载 .config
 echo -e "${YELLOW}加载 .config${NC}"
 echo -e "${YELLOW}加载自定义配置...${NC}"
-curl -skL https://raw.githubusercontent.com/oppen321/ZeroWrt/refs/heads/master/configs/x86_64.config -o .config
+curl -skL https://raw.githubusercontent.com/zijieKwok/istoreos-actions/refs/heads/main/.config -o .config
 
 # 生成默认配置
 echo -e "${GREEN}生成默认配置...${NC}"
 make defconfig
 
 # 编译 ZeroWrt
-echo -e "${BLUE}开始编译 ZeroWrt...${NC}"
+echo -e "${BLUE}开始编译 iStoreOS...${NC}"
 echo -e "${YELLOW}使用所有可用的 CPU 核心进行并行编译...${NC}"
 make -j$(nproc) || \
   echo -e "${RED}并行编译失败，回退到单核编译...${NC}" && make -j1 || \
