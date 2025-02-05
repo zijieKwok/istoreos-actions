@@ -1,10 +1,11 @@
 #!/bin/bash
 
 # 修改默认IP
-sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
-
+sed -i 's/192.168.100.1/192.168.2.1/g' package/istoreos-files/Makefile
 # 更改 Argon 主题背景
-cp -f $GITHUB_WORKSPACE/istoreos/bg1.jpg feeds/third/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
+rm -rf feeds/third/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
+cp -f $GITHUB_WORKSPACE/istoreos/bg1.jpg feeds/third/luci-theme-argon/htdocs/luci-static/argon/img/
+rm -rf feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
 cp -f $GITHUB_WORKSPACE/istoreos/index.js feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
 # profile
 sed -i 's#\\u@\\h:\\w\\\$#\\[\\e[32;1m\\][\\u@\\h\\[\\e[0m\\] \\[\\033[01;34m\\]\\W\\[\\033[00m\\]\\[\\e[32;1m\\]]\\[\\e[0m\\]\\\$#g' package/base-files/files/etc/profile
@@ -17,12 +18,18 @@ sed -i '3 a\\t\t"order": 50,' feeds/luci/applications/luci-app-ttyd/root/usr/sha
 sed -i 's/procd_set_param stdout 1/procd_set_param stdout 0/g' feeds/packages/utils/ttyd/files/ttyd.init
 sed -i 's/procd_set_param stderr 1/procd_set_param stderr 0/g' feeds/packages/utils/ttyd/files/ttyd.init
 
+# 修改默认密码
+rm -rf package/base-files/files/etc/passwd
+cp -f $GITHUB_WORKSPACE/istoreos/passwd package/base-files/files/etc/
+rm -rf package/base-files/files/etc/shadow 
+cp -f $GITHUB_WORKSPACE/istoreos/shadow package/base-files/files/etc/
+
 # bash
-sed -i 's#ash#bash#g' package/base-files/files/etc/passwd
-sed -i '\#export ENV=/etc/shinit#a export HISTCONTROL=ignoredups' package/base-files/files/etc/profile
-mkdir -p files/root
-curl -so files/root/.bash_profile https://git.kejizero.online/zhao/files/raw/branch/main/root/.bash_profile
-curl -so files/root/.bashrc https://git.kejizero.online/zhao/files/raw/branch/main/root/.bashrc
+# sed -i 's#ash#bash#g' package/base-files/files/etc/passwd
+# sed -i '\#export ENV=/etc/shinit#a export HISTCONTROL=ignoredups' package/base-files/files/etc/profile
+# mkdir -p files/root
+# curl -so files/root/.bash_profile https://git.kejizero.online/zhao/files/raw/branch/main/root/.bash_profile
+# curl -so files/root/.bashrc https://git.kejizero.online/zhao/files/raw/branch/main/root/.bashrc
 
 # Nginx
 sed -i "s/large_client_header_buffers 2 1k/large_client_header_buffers 4 32k/g" feeds/packages/net/nginx-util/files/uci.conf.template
@@ -57,7 +64,7 @@ sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' By JayKwok'/g" package/base-
 rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box,adguardhome,socat}
 rm -rf feeds/packages/net/alist feeds/luci/applications/luci-app-alist
 rm -rf feeds/packages/utils/v2dat
-rm -rf feeds/packages/lang/golang
+
 
 # Git稀疏克隆，只克隆指定目录到本地
 function git_sparse_clone() {
@@ -70,6 +77,7 @@ function git_sparse_clone() {
 }
 
 # golong1.23依赖
+rm -rf feeds/packages/lang/golang
 #git clone --depth=1 https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
 git clone https://git.kejizero.online/zhao/packages_lang_golang -b 23.x feeds/packages/lang/golang
 
@@ -90,7 +98,7 @@ git clone https://github.com/sbwml/luci-app-mentohust package/mentohust
 git_sparse_clone master https://github.com/kenzok8/openwrt-packages adguardhome luci-app-adguardhome
 
 # default-settings
-git clone --depth=1 -b dev https://github.com/oppen321/default-settings package/default-settings
+# git clone --depth=1 -b dev https://github.com/oppen321/default-settings package/default-settings
 
 # Docker
 rm -rf feeds/luci/applications/luci-app-dockerman
@@ -124,8 +132,8 @@ git clone https://github.com/sbwml/feeds_packages_utils_unzip feeds/packages/uti
 
 # frpc名称
 sed -i 's,发送,Transmission,g' feeds/luci/applications/luci-app-transmission/po/zh_Hans/transmission.po
-sed -i 's,frp 服务器,FRP 服务器,g' feeds/luci/applications/luci-app-frps/po/zh_Hans/frps.po
-sed -i 's,frp 客户端,FRP 客户端,g' feeds/luci/applications/luci-app-frpc/po/zh_Hans/frpc.po
+sed -i 's,frp 服务器,frp服务器,g' feeds/luci/applications/luci-app-frps/po/zh_Hans/frps.po
+sed -i 's,frp 客户端,frp客户端,g' feeds/luci/applications/luci-app-frpc/po/zh_Hans/frpc.po
 
 # 必要的补丁
 pushd feeds/luci
