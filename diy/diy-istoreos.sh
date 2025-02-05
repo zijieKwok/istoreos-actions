@@ -112,9 +112,6 @@ rm -rf feeds/{packages/net/miniupnpd,luci/applications/luci-app-upnp}
 git clone https://git.kejizero.online/zhao/miniupnpd feeds/packages/net/miniupnpd -b v2.3.7
 git clone https://git.kejizero.online/zhao/luci-app-upnp feeds/luci/applications/luci-app-upnp -b master
 
-# 修改名称
-# sed -i 's/iStoreOS/ZeroWrt/' package/base-files/files/bin/config_generate
-
 # Lucky
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
@@ -142,12 +139,12 @@ sed -i 's/2.openwrt.pool.ntp.org/time1.cloud.tencent.com/g' package/base-files/f
 sed -i 's/3.openwrt.pool.ntp.org/time2.cloud.tencent.com/g' package/base-files/files/bin/config_generate
 
 # ZeroWrt选项菜单
-mkdir -p files/bin
-curl -L -o files/bin/ZeroWrt https://git.kejizero.online/zhao/files/raw/branch/main/bin/ZeroWrt
-chmod +x files/bin/ZeroWrt
-mkdir -p files/root
-curl -L -o files/root/version.txt https://git.kejizero.online/zhao/files/raw/branch/main/bin/version.txt
-chmod +x files/root/version.txt
+# mkdir -p files/bin
+# curl -L -o files/bin/ZeroWrt https://git.kejizero.online/zhao/files/raw/branch/main/bin/ZeroWrt
+# chmod +x files/bin/ZeroWrt
+# mkdir -p files/root
+# curl -L -o files/root/version.txt https://git.kejizero.online/zhao/files/raw/branch/main/bin/version.txt
+# chmod +x files/root/version.txt
 
 # Nginx
 mkdir -p files/etc/config
