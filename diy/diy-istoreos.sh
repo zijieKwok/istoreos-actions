@@ -97,6 +97,7 @@ sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/package
 
 # SSRP & Passwall
 git clone https://git.kejizero.online/zhao/openwrt_helloworld.git package/helloworld -b v5
+rm -rf package/helloworld/luci-app-openclash
 
 # Alist
 git clone https://git.kejizero.online/zhao/luci-app-alist package/alist
