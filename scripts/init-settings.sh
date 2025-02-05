@@ -343,7 +343,7 @@ uci -q del wireless.wifinet2
 uci -q set wireless.wifinet0=wifi-iface
 uci -q set wireless.wifinet0.device='radio0'
 uci -q set wireless.wifinet0.mode='ap'
-uci -q set wireless.wifinet0.ssid='ZeroWrt_5G'
+uci -q set wireless.wifinet0.ssid='OpenWrt_5G'
 uci -q set wireless.wifinet0.encryption='none'
 uci -q set wireless.wifinet0.network='lan'
 
@@ -358,7 +358,7 @@ uci -q set wireless.radio0.disabled=0     # 启用 radio0
 uci -q set wireless.wifinet1=wifi-iface
 uci -q set wireless.wifinet1.device='radio1'
 uci -q set wireless.wifinet1.mode='ap'
-uci -q set wireless.wifinet1.ssid='ZeroWrt_2.4G'
+uci -q set wireless.wifinet1.ssid='OpenWrt_2.4G'
 uci -q set wireless.wifinet1.encryption='none'
 uci -q set wireless.wifinet1.network='lan'
 
