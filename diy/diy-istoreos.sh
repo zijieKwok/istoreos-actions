@@ -103,21 +103,6 @@ git_sparse_clone master https://github.com/kenzok8/openwrt-packages adguardhome 
 # default-settings
 # git clone --depth=1 -b dev https://github.com/oppen321/default-settings package/default-settings
 
-# Docker
-rm -rf feeds/luci/applications/luci-app-dockerman
-git clone https://git.kejizero.online/zhao/luci-app-dockerman -b 24.10 feeds/luci/applications/luci-app-dockerman
-rm -rf feeds/packages/utils/{docker,dockerd,containerd,runc}
-git clone https://git.kejizero.online/zhao/packages_utils_docker feeds/packages/utils/docker
-git clone https://git.kejizero.online/zhao/packages_utils_dockerd feeds/packages/utils/dockerd
-git clone https://git.kejizero.online/zhao/packages_utils_containerd feeds/packages/utils/containerd
-git clone https://git.kejizero.online/zhao/packages_utils_runc feeds/packages/utils/runc
-sed -i '/sysctl.d/d' feeds/packages/utils/dockerd/Makefile
-pushd feeds/packages
-    curl -s https://init.cooluc.com/openwrt/patch/docker/0001-dockerd-fix-bridge-network.patch | patch -p1
-    curl -s https://init.cooluc.com/openwrt/patch/docker/0002-docker-add-buildkit-experimental-support.patch | patch -p1
-    curl -s https://init.cooluc.com/openwrt/patch/docker/0003-dockerd-disable-ip6tables-for-bridge-network-by-defa.patch | patch -p1
-popd
-
 # UPnP
 rm -rf feeds/{packages/net/miniupnpd,luci/applications/luci-app-upnp}
 git clone https://git.kejizero.online/zhao/miniupnpd feeds/packages/net/miniupnpd -b v2.3.7
@@ -149,44 +134,7 @@ sed -i 's/1.openwrt.pool.ntp.org/ntp2.aliyun.com/g' package/base-files/files/bin
 sed -i 's/2.openwrt.pool.ntp.org/time1.cloud.tencent.com/g' package/base-files/files/bin/config_generate
 sed -i 's/3.openwrt.pool.ntp.org/time2.cloud.tencent.com/g' package/base-files/files/bin/config_generate
 
-# ZeroWrt选项菜单
-# mkdir -p files/bin
-# curl -L -o files/bin/ZeroWrt https://git.kejizero.online/zhao/files/raw/branch/main/bin/ZeroWrt
-# chmod +x files/bin/ZeroWrt
-# mkdir -p files/root
-# curl -L -o files/root/version.txt https://git.kejizero.online/zhao/files/raw/branch/main/bin/version.txt
-# chmod +x files/root/version.txt
 
-# Nginx
-mkdir -p files/etc/config
-curl -L -o files/etc/config/nginx https://git.kejizero.online/zhao/files/raw/branch/main/etc/nginx/nginx
-
-# usbreset
-mkdir -p files/etc/hotplug.d/block
-curl -L -o files/etc/hotplug.d/block/20-usbreset https://raw.githubusercontent.com/oppen321/ZeroWrt/refs/heads/master/files/20-usbreset
-chmod +x files/etc/hotplug.d/block/20-usbreset
-
-# swapp
-mkdir -p files/etc/sysctl.d
-curl -L -o files/etc/sysctl.d/15-vm-swappiness.conf https://raw.githubusercontent.com/oppen321/ZeroWrt/refs/heads/master/files/15-vm-swappiness.conf
-curl -L -o files/etc/sysctl.d/16-udp-buffer-size.conf https://raw.githubusercontent.com/oppen321/ZeroWrt/refs/heads/master/files/16-udp-buffer-size.conf
-chmod +x files/etc/sysctl.d/15-vm-swappiness.conf
-chmod +x files/etc/sysctl.d/16-udp-buffer-size.conf
-
-# default_set
-mkdir -p files/etc/config
-curl -L -o files/etc/config/default_dhcp.conf https://raw.githubusercontent.com/oppen321/ZeroWrt/refs/heads/master/files/default_dhcp.conf
-curl -L -o files/etc/config/default_mosdns https://raw.githubusercontent.com/oppen321/ZeroWrt/refs/heads/master/files/default_mosdns
-curl -L -o files/etc/config/default_smartdns https://raw.githubusercontent.com/oppen321/ZeroWrt/refs/heads/master/files/default_smartdns
-curl -L -o files/etc/config/default_AdGuardHome https://raw.githubusercontent.com/oppen321/ZeroWrt/refs/heads/master/files/default_AdGuardHome
-curl -L -o files/etc/config/default_passwall https://raw.githubusercontent.com/oppen321/ZeroWrt/refs/heads/master/files/default_passwall
-curl -L -o files/etc/config/default_openclash https://raw.githubusercontent.com/oppen321/ZeroWrt/refs/heads/master/files/default_openclash
-chmod +x files/etc/config/default_dhcp.conf
-chmod +x files/etc/config/default_mosdns
-chmod +x files/etc/config/default_smartdns
-chmod +x files/etc/config/default_AdGuardHome
-chmod +x files/etc/config/default_passwall
-chmod +x files/etc/config/default_openclash
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
