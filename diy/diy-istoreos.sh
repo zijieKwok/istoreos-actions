@@ -9,7 +9,6 @@ rm -rf feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quick
 cp -f $GITHUB_WORKSPACE/istoreos/index.js feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
 
 # 增加驱动补丁
-rm -rf target/linux/x86/patches-6.6/*
 cp -f $GITHUB_WORKSPACE/istoreos/patches-6.6/* target/linux/x86/patches-6.6/
 
 # profile
