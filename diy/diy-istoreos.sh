@@ -24,10 +24,10 @@ sed -i 's/procd_set_param stdout 1/procd_set_param stdout 0/g' feeds/packages/ut
 sed -i 's/procd_set_param stderr 1/procd_set_param stderr 0/g' feeds/packages/utils/ttyd/files/ttyd.init
 
 # 修改默认密码
-rm -rf package/base-files/files/etc/passwd
-cp -f $GITHUB_WORKSPACE/istoreos/passwd package/base-files/files/etc/
-rm -rf package/base-files/files/etc/shadow 
-cp -f $GITHUB_WORKSPACE/istoreos/shadow package/base-files/files/etc/
+# rm -rf package/base-files/files/etc/passwd
+# cp -f $GITHUB_WORKSPACE/istoreos/passwd package/base-files/files/etc/
+# rm -rf package/base-files/files/etc/shadow 
+# cp -f $GITHUB_WORKSPACE/istoreos/shadow package/base-files/files/etc/
 
 # bash
 # sed -i 's#ash#bash#g' package/base-files/files/etc/passwd
@@ -90,10 +90,10 @@ rm -rf feeds/packages/lang/golang
 git clone https://git.kejizero.online/zhao/packages_lang_golang -b 23.x feeds/packages/lang/golang
 
 # tailscale
-git clone https://github.com/Jaykwok2999/istoreos-ipk.git package/istoreos_ipk package/istoreos_ipk
-rm -rf feeds/packages/net/tailscale/*
-cp -af package/istoreos_ipk/tailscale/tailscale/*  feeds/packages/net/tailscale/
-sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
+# git clone https://github.com/Jaykwok2999/istoreos-ipk.git package/istoreos_ipk package/istoreos_ipk
+# rm -rf feeds/packages/net/tailscale/*
+# cp -af package/istoreos_ipk/tailscale/tailscale/*  feeds/packages/net/tailscale/
+# sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 
 # SSRP & Passwall
 git clone https://git.kejizero.online/zhao/openwrt_helloworld.git package/helloworld -b v5
