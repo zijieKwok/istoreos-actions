@@ -9,8 +9,8 @@ rm -rf feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quick
 cp -f $GITHUB_WORKSPACE/istoreos/index.js feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
 
 # 增加驱动补丁
-cp -f $GITHUB_WORKSPACE/istoreos/patches-6.6/993-bnx2x_warpcore_8727_2_5g_sgmii_txfault.patch target/linux/x86/patches-6.6/
-cp -f $GITHUB_WORKSPACE/istoreos/patches-6.6/patches-6.6/996-intel-igc-i225-i226-disable-eee.patch target/linux/x86/patches-6.6/
+# cp -f $GITHUB_WORKSPACE/istoreos/patches-6.6/993-bnx2x_warpcore_8727_2_5g_sgmii_txfault.patch target/linux/x86/patches-6.6/
+# cp -f $GITHUB_WORKSPACE/istoreos/patches-6.6/patches-6.6/996-intel-igc-i225-i226-disable-eee.patch target/linux/x86/patches-6.6/
 
 # profile
 sed -i 's#\\u@\\h:\\w\\\$#\\[\\e[32;1m\\][\\u@\\h\\[\\e[0m\\] \\[\\033[01;34m\\]\\W\\[\\033[00m\\]\\[\\e[32;1m\\]]\\[\\e[0m\\]\\\$#g' package/base-files/files/etc/profile
