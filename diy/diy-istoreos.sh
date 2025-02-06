@@ -5,10 +5,11 @@ sed -i 's/192.168.100.1/192.168.2.1/g' package/istoreos-files/Makefile
 # 更改 Argon 主题背景
 rm -rf package/base-files/files/etc/banner
 cp -f package/istoreos_ipk/patch/diy/banner package/base-files/files/etc/banner
-rm -rf feeds/third/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
-cp -f package/istoreos_ipk/patch/diy/bg1.jpg feeds/third/luci-theme-argon/htdocs/luci-static/argon/img/
+rm -rf feeds/third/luci-theme-argon/htdocs
+cp -f package/istoreos_ipk/patch/diy/htdocs feeds/third/luci-theme-argon/
 rm -rf feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
 cp -f package/istoreos_ipk/patch/diy/index.js feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
+
 
 # 增加驱动补丁
 # cp -f package/istoreos_ipk/patch/diy/patches-6.6/993-bnx2x_warpcore_8727_2_5g_sgmii_txfault.patch target/linux/x86/patches-6.6/
