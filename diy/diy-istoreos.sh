@@ -4,11 +4,11 @@
 sed -i 's/192.168.100.1/192.168.2.1/g' package/istoreos-files/Makefile
 # 更改 Argon 主题背景
 rm -rf package/base-files/files/etc/banner
-cp -f $GITHUB_WORKSPACE/diy/banner package/base-files/files/etc/
+cp -f package/istoreos_ipk/patch/diy/banner package/base-files/files/etc/banner
 rm -rf feeds/third/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
-cp -f $GITHUB_WORKSPACE/istoreos/bg1.jpg feeds/third/luci-theme-argon/htdocs/luci-static/argon/img/
+cp -f package/istoreos_ipk/patch/diy/bg1.jpg feeds/third/luci-theme-argon/htdocs/luci-static/argon/img/
 rm -rf feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
-cp -f $GITHUB_WORKSPACE/istoreos/index.js feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
+cp -f package/istoreos_ipk/patch/diy/index.js feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
 
 # 增加驱动补丁
 # cp -f $GITHUB_WORKSPACE/istoreos/patches-6.6/993-bnx2x_warpcore_8727_2_5g_sgmii_txfault.patch target/linux/x86/patches-6.6/
@@ -30,22 +30,6 @@ rm -rf package/base-files/files/etc/passwd
 cp -f $GITHUB_WORKSPACE/istoreos/passwd package/base-files/files/etc/
 rm -rf package/base-files/files/etc/shadow 
 cp -f $GITHUB_WORKSPACE/istoreos/shadow package/base-files/files/etc/
-
-# bash
-# sed -i 's#ash#bash#g' package/base-files/files/etc/passwd
-# sed -i '\#export ENV=/etc/shinit#a export HISTCONTROL=ignoredups' package/base-files/files/etc/profile
-# mkdir -p files/root
-# curl -so files/root/.bash_profile https://git.kejizero.online/zhao/files/raw/branch/main/root/.bash_profile
-# curl -so files/root/.bashrc https://git.kejizero.online/zhao/files/raw/branch/main/root/.bashrc
-
-# Nginx
-sed -i "s/large_client_header_buffers 2 1k/large_client_header_buffers 4 32k/g" feeds/packages/net/nginx-util/files/uci.conf.template
-sed -i "s/client_max_body_size 128M/client_max_body_size 2048M/g" feeds/packages/net/nginx-util/files/uci.conf.template
-sed -i '/client_max_body_size/a\\tclient_body_buffer_size 8192M;' feeds/packages/net/nginx-util/files/uci.conf.template
-sed -i '/client_max_body_size/a\\tserver_names_hash_bucket_size 128;' feeds/packages/net/nginx-util/files/uci.conf.template
-sed -i '/ubus_parallel_req/a\        ubus_script_timeout 600;' feeds/packages/net/nginx/files-luci-support/60_nginx-luci-support
-sed -ri "/luci-webui.socket/i\ \t\tuwsgi_send_timeout 600\;\n\t\tuwsgi_connect_timeout 600\;\n\t\tuwsgi_read_timeout 600\;" feeds/packages/net/nginx/files-luci-support/luci.locations
-sed -ri "/luci-cgi_io.socket/i\ \t\tuwsgi_send_timeout 600\;\n\t\tuwsgi_connect_timeout 600\;\n\t\tuwsgi_read_timeout 600\;" feeds/packages/net/nginx/files-luci-support/luci.locations
 
 # uwsgi
 sed -i 's,procd_set_param stderr 1,procd_set_param stderr 0,g' feeds/packages/net/uwsgi/files/uwsgi.init
@@ -98,7 +82,7 @@ rm -rf feeds/packages/lang/golang
 git clone https://git.kejizero.online/zhao/packages_lang_golang -b 23.x feeds/packages/lang/golang
 
 # tailscale
-# git clone https://github.com/Jaykwok2999/istoreos-ipk.git package/istoreos_ipk
+git clone https://github.com/Jaykwok2999/istoreos-ipk.git package/istoreos_ipk
 # rm -rf feeds/packages/net/tailscale/*
 # cp -af package/istoreos_ipk/tailscale/tailscale/*  feeds/packages/net/tailscale/
 # sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
