@@ -5,8 +5,8 @@ sed -i 's/192.168.100.1/192.168.2.1/g' package/istoreos-files/Makefile
 # 更改 Argon 主题背景
 # rm -rf package/base-files/files/etc/banner
 # cp -af package/istoreos_ipk/patch/diy/banner package/base-files/files/etc/
-# rm -rf feeds/third/luci-theme-argon/htdocs
-# cp -af package/istoreos_ipk/patch/diy/htdocs feeds/third/luci-theme-argon/
+# rm -rf feeds/third/luci-theme-argon/*
+# cp -af package/istoreos_ipk/luci-theme-argon/* feeds/third/luci-theme-argon/
 # rm -rf feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
 # cp -af package/istoreos_ipk/patch/diy/index.js feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
 # rm -rf feeds/third_party/luci-app-LingTiGameAcc
