@@ -2,15 +2,6 @@
 
 # 修改默认IP
 sed -i 's/192.168.100.1/192.168.2.1/g' package/istoreos-files/Makefile
-# 更改 Argon 主题背景
-rm -rf package/base-files/files/etc/banner
-cp -af feeds/istoreos_ipk/patch/diy/banner package/base-files/files/etc/
-rm -rf feeds/third/luci-theme-argon/*
-cp -af feeds/istoreos_ipk/luci-theme-argon/* feeds/third/luci-theme-argon/
-rm -rf feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
-cp -af feeds/istoreos_ipk/patch/diy/index.js feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
-rm -rf feeds/third_party/luci-app-LingTiGameAcc
-rm -rf feeds/istoreos_ipk/op-daed
 
 # 增加驱动补丁
 # cp -af package/istoreos_ipk/patch/diy/patches-6.6/993-bnx2x_warpcore_8727_2_5g_sgmii_txfault.patch target/linux/x86/patches-6.6/
@@ -136,7 +127,15 @@ sed -i 's/1.openwrt.pool.ntp.org/ntp2.aliyun.com/g' package/base-files/files/bin
 sed -i 's/2.openwrt.pool.ntp.org/time1.cloud.tencent.com/g' package/base-files/files/bin/config_generate
 sed -i 's/3.openwrt.pool.ntp.org/time2.cloud.tencent.com/g' package/base-files/files/bin/config_generate
 
-
+# 更改 Argon 主题背景
+rm -rf package/base-files/files/etc/banner
+cp -af feeds/istoreos_ipk/patch/diy/banner package/base-files/files/etc/
+rm -rf feeds/third/luci-theme-argon/*
+cp -af feeds/istoreos_ipk/luci-theme-argon/* feeds/third/luci-theme-argon/
+rm -rf feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
+cp -af feeds/istoreos_ipk/patch/diy/index.js feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
+rm -rf feeds/third_party/luci-app-LingTiGameAcc
+rm -rf feeds/istoreos_ipk/op-daed
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
