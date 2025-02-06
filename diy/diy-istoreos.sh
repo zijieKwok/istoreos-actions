@@ -26,10 +26,7 @@ sed -i 's/procd_set_param stdout 1/procd_set_param stdout 0/g' feeds/packages/ut
 sed -i 's/procd_set_param stderr 1/procd_set_param stderr 0/g' feeds/packages/utils/ttyd/files/ttyd.init
 
 # 修改默认密码
-rm -rf package/base-files/files/etc/passwd
-cp -f package/istoreos_ipk/patch/diy/passwd package/base-files/files/etc/
-rm -rf package/base-files/files/etc/shadow 
-cp -f package/istoreos_ipk/patch/diy/shadow package/base-files/files/etc/
+sed -i 's/root:::0:99999:7:::/root:$1$5mjCdAB1$Uk1sNbwoqfHxUmzRIeuZK1:0:0:99999:7:::/g' package/base-files/files/etc/shadow
 
 # uwsgi
 sed -i 's,procd_set_param stderr 1,procd_set_param stderr 0,g' feeds/packages/net/uwsgi/files/uwsgi.init
