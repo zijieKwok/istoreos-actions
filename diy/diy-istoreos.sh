@@ -24,10 +24,10 @@ sed -i 's/procd_set_param stdout 1/procd_set_param stdout 0/g' feeds/packages/ut
 sed -i 's/procd_set_param stderr 1/procd_set_param stderr 0/g' feeds/packages/utils/ttyd/files/ttyd.init
 
 # 修改默认密码
-# rm -rf package/base-files/files/etc/passwd
-# cp -f $GITHUB_WORKSPACE/istoreos/passwd package/base-files/files/etc/
-# rm -rf package/base-files/files/etc/shadow 
-# cp -f $GITHUB_WORKSPACE/istoreos/shadow package/base-files/files/etc/
+rm -rf package/base-files/files/etc/passwd
+cp -f $GITHUB_WORKSPACE/istoreos/passwd package/base-files/files/etc/
+rm -rf package/base-files/files/etc/shadow 
+cp -f $GITHUB_WORKSPACE/istoreos/shadow package/base-files/files/etc/
 
 # bash
 # sed -i 's#ash#bash#g' package/base-files/files/etc/passwd
