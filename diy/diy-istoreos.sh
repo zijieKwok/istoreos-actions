@@ -60,7 +60,7 @@ sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' By JayKwok'/g" package/base-
 
 # 移除要替换的包
 rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box,adguardhome}
-# rm -rf feeds/packages/net/alist feeds/luci/applications/luci-app-alist
+rm -rf feeds/packages/net/alist feeds/luci/applications/luci-app-alist
 rm -rf feeds/packages/utils/v2dat
 
 
