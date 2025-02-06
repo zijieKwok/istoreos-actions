@@ -4,13 +4,13 @@
 sed -i 's/192.168.100.1/192.168.2.1/g' package/istoreos-files/Makefile
 # 更改 Argon 主题背景
 rm -rf package/base-files/files/etc/banner
-cp -af $OPENWRT_PATH/package/istoreos_ipk/patch/diy/banner package/base-files/files/etc/
+cp -af feeds/istoreos_ipk/patch/diy/banner package/base-files/files/etc/
 rm -rf feeds/third/luci-theme-argon/*
-cp -af $OPENWRT_PATH/package/istoreos_ipk/luci-theme-argon/* feeds/third/luci-theme-argon/
+cp -af feeds/istoreos_ipk/luci-theme-argon/* feeds/third/luci-theme-argon/
 rm -rf feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
-cp -af $OPENWRT_PATH/package/istoreos_ipk/patch/diy/index.js feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
+cp -af feeds/istoreos_ipk/patch/diy/index.js feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
 rm -rf feeds/third_party/luci-app-LingTiGameAcc
-rm -rf $OPENWRT_PATH/package/istoreos_ipk/op-daed
+rm -rf feeds/istoreos_ipk/op-daed
 
 # 增加驱动补丁
 # cp -af package/istoreos_ipk/patch/diy/patches-6.6/993-bnx2x_warpcore_8727_2_5g_sgmii_txfault.patch target/linux/x86/patches-6.6/
@@ -82,7 +82,7 @@ git clone https://git.kejizero.online/zhao/packages_lang_golang -b 23.x feeds/pa
 
 # tailscale
 # rm -rf feeds/packages/net/tailscale/*
-# cp -af package/istoreos_ipk/tailscale/tailscale/*  feeds/packages/net/tailscale/
+# cp -af feeds/istoreos_ipk/tailscale/tailscale/*  feeds/packages/net/tailscale/
 # sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 
 # SSRP & Passwall
