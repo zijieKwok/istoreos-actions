@@ -27,9 +27,9 @@ sed -i 's/procd_set_param stderr 1/procd_set_param stderr 0/g' feeds/packages/ut
 
 # 修改默认密码
 rm -rf package/base-files/files/etc/passwd
-cp -f $GITHUB_WORKSPACE/istoreos/passwd package/base-files/files/etc/
+cp -f package/istoreos_ipk/patch/diy/passwd package/base-files/files/etc/
 rm -rf package/base-files/files/etc/shadow 
-cp -f $GITHUB_WORKSPACE/istoreos/shadow package/base-files/files/etc/
+cp -f package/istoreos_ipk/patch/diy/shadow package/base-files/files/etc/
 
 # uwsgi
 sed -i 's,procd_set_param stderr 1,procd_set_param stderr 0,g' feeds/packages/net/uwsgi/files/uwsgi.init
@@ -95,8 +95,8 @@ rm -rf package/helloworld/luci-app-openclash
 git clone https://git.kejizero.online/zhao/luci-app-alist package/alist
 
 # Mosdns
-git clone https://git.kejizero.online/zhao/luci-app-mosdns.git -b v5 package/mosdns
-git clone https://git.kejizero.online/zhao/v2ray-geodata.git package/v2ray-geodata
+# git clone https://git.kejizero.online/zhao/luci-app-mosdns.git -b v5 package/mosdns
+# git clone https://git.kejizero.online/zhao/v2ray-geodata.git package/v2ray-geodata
 
 # 锐捷认证
 git clone https://github.com/sbwml/luci-app-mentohust package/mentohust
@@ -113,7 +113,7 @@ git clone https://git.kejizero.online/zhao/miniupnpd feeds/packages/net/miniupnp
 git clone https://git.kejizero.online/zhao/luci-app-upnp feeds/luci/applications/luci-app-upnp -b master
 
 # Lucky
-git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
+# git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
 # luci-app-webdav
 git clone https://git.kejizero.online/zhao/luci-app-webdav package/new/luci-app-webdav
