@@ -9,7 +9,7 @@ sed -i 's/192.168.100.1/192.168.2.1/g' package/istoreos-files/Makefile
 # cp -af package/istoreos_ipk/patch/diy/htdocs feeds/third/luci-theme-argon/
 # rm -rf feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
 # cp -af package/istoreos_ipk/patch/diy/index.js feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
-
+# rm -rf feeds/third_party/luci-app-LingTiGameAcc
 
 # 增加驱动补丁
 # cp -af package/istoreos_ipk/patch/diy/patches-6.6/993-bnx2x_warpcore_8727_2_5g_sgmii_txfault.patch target/linux/x86/patches-6.6/
