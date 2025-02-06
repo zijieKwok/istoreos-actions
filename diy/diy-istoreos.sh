@@ -47,10 +47,11 @@ sed -i "s/DISTRIB_DESCRIPTION='*.*'/DISTRIB_DESCRIPTION='iStoreOS-$(date +%Y%m%d
 sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' By JayKwok'/g" package/base-files/files/etc/openwrt_release
 
 # 移除要替换的包
-rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box,adguardhome}
+rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box,adguardhome,socat}
 rm -rf feeds/packages/net/alist feeds/luci/applications/luci-app-alist
 rm -rf feeds/packages/utils/v2dat
-
+rm -rf feeds/third_party/luci-app-LingTiGameAcc
+rm -rf feeds/istoreos_ipk/op-daed
 
 # Git稀疏克隆，只克隆指定目录到本地
 function git_sparse_clone() {
@@ -128,10 +129,8 @@ rm -rf package/base-files/files/etc/banner
 cp -af feeds/istoreos_ipk/patch/diy/banner package/base-files/files/etc/
 rm -rf feeds/third/luci-theme-argon/*
 cp -af feeds/istoreos_ipk/luci-theme-argon/* feeds/third/luci-theme-argon/
-rm -rf feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
-cp -af feeds/istoreos_ipk/patch/diy/index.js feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
-rm -rf feeds/third_party/luci-app-LingTiGameAcc
-rm -rf feeds/istoreos_ipk/op-daed
+sed -i 's/"https://www.istoreos.com"/"*.*"/g' feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
+sed -i 's/"iStoreOS\u5B98\u7F51"/"JayKwok"/g' feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
 
 # 增加驱动补丁
 # cp -af package/istoreos_ipk/patch/diy/patches-6.6/993-bnx2x_warpcore_8727_2_5g_sgmii_txfault.patch target/linux/x86/patches-6.6/
