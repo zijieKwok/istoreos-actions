@@ -98,7 +98,7 @@ rm -rf feeds/packages/lang/golang
 git clone https://git.kejizero.online/zhao/packages_lang_golang -b 23.x feeds/packages/lang/golang
 
 # tailscale
-# git clone https://github.com/Jaykwok2999/istoreos-ipk.git package/istoreos_ipk package/istoreos_ipk
+# git clone https://github.com/Jaykwok2999/istoreos-ipk.git package/istoreos_ipk
 # rm -rf feeds/packages/net/tailscale/*
 # cp -af package/istoreos_ipk/tailscale/tailscale/*  feeds/packages/net/tailscale/
 # sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
