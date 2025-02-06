@@ -3,17 +3,17 @@
 # 修改默认IP
 sed -i 's/192.168.100.1/192.168.2.1/g' package/istoreos-files/Makefile
 # 更改 Argon 主题背景
-rm -rf package/base-files/files/etc/banner
-cp -f package/istoreos_ipk/patch/diy/banner package/base-files/files/etc/
-rm -rf feeds/third/luci-theme-argon/htdocs
-cp -f package/istoreos_ipk/patch/diy/htdocs feeds/third/luci-theme-argon/
-rm -rf feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
-cp -f package/istoreos_ipk/patch/diy/index.js feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
+# rm -rf package/base-files/files/etc/banner
+# cp -af package/istoreos_ipk/patch/diy/banner package/base-files/files/etc/
+# rm -rf feeds/third/luci-theme-argon/htdocs
+# cp -af package/istoreos_ipk/patch/diy/htdocs feeds/third/luci-theme-argon/
+# rm -rf feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
+# cp -af package/istoreos_ipk/patch/diy/index.js feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/
 
 
 # 增加驱动补丁
-# cp -f package/istoreos_ipk/patch/diy/patches-6.6/993-bnx2x_warpcore_8727_2_5g_sgmii_txfault.patch target/linux/x86/patches-6.6/
-# cp -f package/istoreos_ipk/patch/diy/patches-6.6/996-intel-igc-i225-i226-disable-eee.patch target/linux/x86/patches-6.6/
+# cp -af package/istoreos_ipk/patch/diy/patches-6.6/993-bnx2x_warpcore_8727_2_5g_sgmii_txfault.patch target/linux/x86/patches-6.6/
+# cp -af package/istoreos_ipk/patch/diy/patches-6.6/996-intel-igc-i225-i226-disable-eee.patch target/linux/x86/patches-6.6/
 
 # profile
 sed -i 's#\\u@\\h:\\w\\\$#\\[\\e[32;1m\\][\\u@\\h\\[\\e[0m\\] \\[\\033[01;34m\\]\\W\\[\\033[00m\\]\\[\\e[32;1m\\]]\\[\\e[0m\\]\\\$#g' package/base-files/files/etc/profile
