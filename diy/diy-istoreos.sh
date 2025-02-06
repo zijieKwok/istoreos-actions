@@ -3,6 +3,8 @@
 # 修改默认IP
 sed -i 's/192.168.100.1/192.168.2.1/g' package/istoreos-files/Makefile
 # 更改 Argon 主题背景
+rm -rf package/base-files/files/etc/banner
+cp -f $GITHUB_WORKSPACE/diy/banner package/base-files/files/etc/
 rm -rf feeds/third/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 cp -f $GITHUB_WORKSPACE/istoreos/bg1.jpg feeds/third/luci-theme-argon/htdocs/luci-static/argon/img/
 rm -rf feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
