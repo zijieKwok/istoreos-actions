@@ -4,7 +4,7 @@
 sed -i 's/192.168.100.1/192.168.2.1/g' package/istoreos-files/Makefile
 # 更改 Argon 主题背景
 rm -rf package/base-files/files/etc/banner
-cp -f package/istoreos_ipk/patch/diy/banner package/base-files/files/etc/banner
+cp -f package/istoreos_ipk/patch/diy/banner package/base-files/files/etc/
 rm -rf feeds/third/luci-theme-argon/htdocs
 cp -f package/istoreos_ipk/patch/diy/htdocs feeds/third/luci-theme-argon/
 rm -rf feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
@@ -55,8 +55,7 @@ sed -i 's/services/nas/g' feeds/nas-packages-luci/luci/luci-app-linkease/luasrc/
 sed -i 's/services/nas/g' feeds/luci/applications/luci-app-hd-idle/root/usr/share/luci/menu.d/luci-app-hd-idle.json
 
 ##加入作者信息
-echo $(TZ=UTC-8 date +"%Y%m%d%M") > version
-sed -i "s/DISTRIB_DESCRIPTION='*.*'/DISTRIB_DESCRIPTION='iStoreOS-$(date +%Y%m%d%M)'/g"  package/base-files/files/etc/openwrt_release
+sed -i "s/DISTRIB_DESCRIPTION='*.*'/DISTRIB_DESCRIPTION='iStoreOS-$(date +%Y%m%d)'/g"  package/base-files/files/etc/openwrt_release
 sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' By JayKwok'/g" package/base-files/files/etc/openwrt_release
 
 # 移除要替换的包
