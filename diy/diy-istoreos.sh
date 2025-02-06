@@ -52,6 +52,7 @@ rm -rf feeds/packages/net/alist feeds/luci/applications/luci-app-alist
 rm -rf feeds/packages/utils/v2dat
 rm -rf feeds/third_party/luci-app-LingTiGameAcc
 rm -rf feeds/istoreos_ipk/op-daed
+rm -rf feeds/third/luci-theme-argon
 
 # Git稀疏克隆，只克隆指定目录到本地
 function git_sparse_clone() {
@@ -127,10 +128,8 @@ sed -i 's/3.openwrt.pool.ntp.org/time2.cloud.tencent.com/g' package/base-files/f
 # 更改 Argon 主题背景
 rm -rf package/base-files/files/etc/banner
 cp -af feeds/istoreos_ipk/patch/diy/banner package/base-files/files/etc/
-rm -rf feeds/third/luci-theme-argon/*
-cp -af feeds/istoreos_ipk/luci-theme-argon/* feeds/third/luci-theme-argon/
-sed -i 's/"https://www.istoreos.com"/"*.*"/g' feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
-sed -i 's/"iStoreOS\u5B98\u7F51"/"JayKwok"/g' feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
+sed -i 's/www.istoreos.com/*.*/g' feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
+sed -i 's/iStoreOS\u5B98\u7F51/JayKwok/g' feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
 
 # 增加驱动补丁
 # cp -af package/istoreos_ipk/patch/diy/patches-6.6/993-bnx2x_warpcore_8727_2_5g_sgmii_txfault.patch target/linux/x86/patches-6.6/
