@@ -131,7 +131,7 @@ cp -af feeds/istoreos_ipk/patch/diy/include/6.6.75/kernel-6.6 include/
 # tailscale
 # rm -rf feeds/packages/net/tailscale/*
 # cp -af feeds/istoreos_ipk/tailscale/tailscale/*  feeds/packages/net/tailscale/
-# sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
+sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 
 # 增加驱动补丁
 # cp -af feeds/istoreos_ipk/patch/diy/patches-6.6/993-bnx2x_warpcore_8727_2_5g_sgmii_txfault.patch target/linux/x86/patches-6.6/
