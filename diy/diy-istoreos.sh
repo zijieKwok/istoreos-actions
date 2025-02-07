@@ -69,11 +69,6 @@ rm -rf feeds/packages/lang/golang
 #git clone --depth=1 https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
 git clone https://git.kejizero.online/zhao/packages_lang_golang -b 23.x feeds/packages/lang/golang
 
-# tailscale
-# rm -rf feeds/packages/net/tailscale/*
-# cp -af feeds/istoreos_ipk/tailscale/tailscale/*  feeds/packages/net/tailscale/
-# sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
-
 # SSRP & Passwall
 git clone https://git.kejizero.online/zhao/openwrt_helloworld.git package/helloworld -b v5
 rm -rf package/helloworld/luci-app-openclash
@@ -125,11 +120,14 @@ sed -i 's/1.openwrt.pool.ntp.org/ntp2.aliyun.com/g' package/base-files/files/bin
 sed -i 's/2.openwrt.pool.ntp.org/time1.cloud.tencent.com/g' package/base-files/files/bin/config_generate
 sed -i 's/3.openwrt.pool.ntp.org/time2.cloud.tencent.com/g' package/base-files/files/bin/config_generate
 
-# 更改 Argon 主题背景
+# 更改 banner
 rm -rf package/base-files/files/etc/banner
 cp -af feeds/istoreos_ipk/patch/diy/banner package/base-files/files/etc/
-sed -i 's/www.istoreos.com/*.*/g' feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
-sed -i 's/iStoreOS\u5B98\u7F51/JayKwok/g' feeds/nas-packages-luci/luci/luci-app-quickstart/htdocs/luci-static/quickstart/index.js
+
+# tailscale
+# rm -rf feeds/packages/net/tailscale/*
+# cp -af feeds/istoreos_ipk/tailscale/tailscale/*  feeds/packages/net/tailscale/
+# sed -i '/\/etc\/init\.d\/tailscale/d;/\/etc\/config\/tailscale/d;' feeds/packages/net/tailscale/Makefile
 
 # 增加驱动补丁
 # cp -af package/istoreos_ipk/patch/diy/patches-6.6/993-bnx2x_warpcore_8727_2_5g_sgmii_txfault.patch target/linux/x86/patches-6.6/
