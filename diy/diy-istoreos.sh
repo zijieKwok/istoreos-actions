@@ -129,8 +129,8 @@ rm -rf package/base-files/files/etc/banner
 cp -af feeds/istoreos_ipk/patch/diy/banner package/base-files/files/etc/
 
 # 更改内核
-rm -rf include/kernel-6.6
-cp -af feeds/istoreos_ipk/patch/diy/include/6.6.75/kernel-6.6 include/
+# rm -rf include/kernel-6.6
+# cp -af feeds/istoreos_ipk/patch/diy/include/6.6.73/kernel-6.6 include/
 
 # tailscale
 # rm -rf feeds/packages/net/tailscale/*
