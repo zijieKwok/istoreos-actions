@@ -106,8 +106,8 @@ git clone https://github.com/sbwml/feeds_packages_utils_unzip feeds/packages/uti
 
 # frpc名称
 sed -i 's,发送,Transmission,g' feeds/luci/applications/luci-app-transmission/po/zh_Hans/transmission.po
-sed -i 's,frp 服务器,frp服务器,g' feeds/luci/applications/luci-app-frps/po/zh_Hans/frps.po
-sed -i 's,frp 客户端,frp客户端,g' feeds/luci/applications/luci-app-frpc/po/zh_Hans/frpc.po
+sed -i 's,frp 服务器,frps 服务器,g' feeds/luci/applications/luci-app-frps/po/zh_Hans/frps.po
+sed -i 's,frp 客户端,frpc 客户端,g' feeds/luci/applications/luci-app-frpc/po/zh_Hans/frpc.po
 
 # 必要的补丁
 pushd feeds/luci
