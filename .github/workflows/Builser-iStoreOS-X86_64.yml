@@ -76,6 +76,8 @@ jobs:
         echo "COMMIT_MESSAGE=$COMMIT_MESSAGE" >> $GITHUB_ENV
         COMMIT_HASH=$(git show -s --date=short --format="hash: %H")
         echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV
+        FIRMWARE_VERSION=$(git show -s --date=short --format="版本: %C")
+        echo "FIRMWARE_VERSION=$(date +"%Y.%m.%d")" >> $GITHUB_ENV
 
     - name: 生成变量
       run: |
