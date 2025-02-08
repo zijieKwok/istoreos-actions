@@ -6,7 +6,7 @@ on:
 #    - cron: 0 22 * * *
 
 env:
-  REPO_URL: https://github.com/istoreos/istoreos
+  REPO_URL: https://github.com/zijieKwok/istoreos.git
   REPO_BRANCH: istoreos-24.10
   CONFIG_FILE: configs/x86_86_iStoreOS.config
   DIY_SCRIPT: diy/diy-istoreos.sh
