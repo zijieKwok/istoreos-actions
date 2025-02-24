@@ -1,4 +1,4 @@
-name: Builser-iStoreOS-X86_64
+name: Builser-iStoreOS-360t7
 
 on:
   workflow_dispatch:
