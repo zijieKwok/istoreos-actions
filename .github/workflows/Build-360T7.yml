@@ -9,12 +9,12 @@ env:
   REPO_URL: https://github.com/zijieKwok/istoreos.git
   REPO_BRANCH: istoreos-24.10
   CONFIG_FILE: configs/ARM/360t7.config
-  DIY_SCRIPT: diy/diy-istoreos.sh
+  DIY_SCRIPT: diy/360t7.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: X86_64_iStoreOS
+  FIRMWARE_TAG: MEDIATEK
   TZ: Asia/Shanghai
 
 jobs:
